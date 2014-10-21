@@ -117,7 +117,7 @@
             <properties>
                 <testToRun>**/*AT.class</testToRun>
                 <site.url>http://www.sysstg.lloydspharmacy.com/</site.url>
-                <api.url>http://www.dulux.com.sg/</api.url>
+                <api.url>http://www.dulux.com.sg</api.url>
                 <site.port></site.port>
                 <site.basepath></site.basepath>
                 <browser>firefox</browser>
