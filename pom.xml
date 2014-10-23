@@ -15,6 +15,53 @@
         <slf4jVersion>1.7.7</slf4jVersion>
     </properties>
 
+    <profiles>
+        <!-- Development environment @ my laptop -->
+        <profile>
+            <id>dev</id>
+            <properties>
+                <testToRun>**/*AT.class</testToRun>
+                <site.url>http://www.sysstg.lloydspharmacy.com/</site.url>
+                <api.url>http://www.dulux.com.sg</api.url>
+                <site.port></site.port>
+                <site.basepath></site.basepath>
+                <browser>firefox</browser>
+                <webdriver.chrome.driver>tools/chromedriver/linux64/chromedriver</webdriver.chrome.driver>
+            </properties>
+        </profile>
+
+        <!-- Single Test @ my laptop -->
+        <profile>
+            <id>single</id>
+            <properties>
+                <testToRun>**/*Single.class</testToRun>
+                <site.url>http://www.sysstg.lloydspharmacy.com/</site.url>
+                <api.url>http://www.dulux.com.sg</api.url>
+                <site.port></site.port>
+                <site.basepath></site.basepath>
+                <browser>chrome</browser>
+                <webdriver.chrome.driver>tools/chromedriver/linux64/chromedriver</webdriver.chrome.driver>
+
+            </properties>
+        </profile>
+
+        <!-- Jenkins environment @ deploy server -->
+        <profile>
+            <id>deploy</id>
+            <properties>
+                <testToRun>**/*JenkinsSuite.class</testToRun>
+                <site.url>http://www.sysstg.lloydspharmacy.com/</site.url>
+                <api.url>http://www.dulux.com.sg/</api.url>
+                <site.port></site.port>
+                <site.basepath></site.basepath>
+                <browser>firefox</browser>
+                <webdriver.chrome.driver>/usr/local/bin/chromedriver</webdriver.chrome.driver>
+            </properties>
+        </profile>
+    </profiles>
+
+
+
 
     <!-- Test Profile -->
     <build>
@@ -109,51 +156,6 @@
 
 
     </build>
-
-    <profiles>
-        <!-- Development environment @ my laptop -->
-        <profile>
-            <id>dev</id>
-            <properties>
-                <testToRun>**/*AT.class</testToRun>
-                <site.url>http://www.sysstg.lloydspharmacy.com/</site.url>
-                <api.url>http://www.dulux.com.sg</api.url>
-                <site.port></site.port>
-                <site.basepath></site.basepath>
-                <browser>firefox</browser>
-                <webdriver.chrome.driver>tools/chromedriver/linux64/chromedriver</webdriver.chrome.driver>
-            </properties>
-        </profile>
-
-        <!-- Single Test @ my laptop -->
-        <profile>
-            <id>single</id>
-            <properties>
-                <testToRun>**/*Single.class</testToRun>
-                <site.url>http://www.sysstg.lloydspharmacy.com/</site.url>
-                <api.url>http://www.dulux.com.sg</api.url>
-                <site.port></site.port>
-                <site.basepath></site.basepath>
-                <browser>chrome</browser>
-                <webdriver.chrome.driver>tools/chromedriver/linux64/chromedriver</webdriver.chrome.driver>
-
-            </properties>
-        </profile>
-
-        <!-- Jenkins environment @ deploy server -->
-        <profile>
-            <id>deploy</id>
-            <properties>
-                <testToRun>**/*JenkinsSuite.class</testToRun>
-                <site.url>http://www.sysstg.lloydspharmacy.com/</site.url>
-                <api.url>http://www.dulux.com.sg/</api.url>
-                <site.port></site.port>
-                <site.basepath></site.basepath>
-                <browser>firefox</browser>
-                <webdriver.chrome.driver>/usr/local/bin/chromedriver</webdriver.chrome.driver>
-            </properties>
-       </profile>
-    </profiles>
 
 
     <dependencies>
@@ -255,6 +257,13 @@
         </dependency>
         <!-- matchers -->
 
+        <!-- appium -->
+        <dependency>
+            <groupId>io.appium</groupId>
+            <artifactId>java-client</artifactId>
+            <version>2.0.0</version>
+        </dependency>
+        <!-- appium -->
 
     </dependencies>
 </project>

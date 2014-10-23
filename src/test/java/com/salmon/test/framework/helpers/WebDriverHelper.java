@@ -13,6 +13,7 @@ import org.openqa.selenium.remote.CapabilityType;
 import org.openqa.selenium.remote.DesiredCapabilities;
 import org.openqa.selenium.support.events.EventFiringWebDriver;
 
+import java.io.File;
 import java.util.logging.Level;
 
 
@@ -41,7 +42,8 @@ public class WebDriverHelper extends EventFiringWebDriver {
             REAL_DRIVER = startChromeDriver();
         } else if (BROWSER.equalsIgnoreCase("firefox")) {
             startFireFoxDriver();
-        } else {
+        }
+        else {
             throw new IllegalArgumentException("Browser type not supported: " + BROWSER);
         }
 
@@ -55,13 +57,14 @@ public class WebDriverHelper extends EventFiringWebDriver {
     }
 
     protected static WebDriver startChromeDriver() {
-        DesiredCapabilities capabilities = getDesiredCapabilities();
+        DesiredCapabilities capabilities = getChromeDesiredCapabilities();
         REAL_DRIVER = new ChromeDriver(ChromeDriverService.createDefaultService(), capabilities);
         REAL_DRIVER.manage().window().setSize(BROWSER_WINDOW_SIZE);
         return REAL_DRIVER;
     }
 
-    private static DesiredCapabilities getDesiredCapabilities() {
+
+    private static DesiredCapabilities getChromeDesiredCapabilities() {
         System.setProperty("webdriver.chrome.driver", "tools/chromedriver/linux64/chromedriver");
         LoggingPreferences logs = new LoggingPreferences();
         logs.enable(LogType.DRIVER, Level.OFF);
@@ -75,6 +78,22 @@ public class WebDriverHelper extends EventFiringWebDriver {
         capabilities.setCapability("chrome.verbose", false);
 
         capabilities.setCapability(ChromeOptions.CAPABILITY, chromeOptions);
+        return capabilities;
+    }
+
+    private static DesiredCapabilities getAppiumDesiredCapabilities() {
+        File classpathRoot = new File(System.getProperty("user.dir"));
+        File appDir = new File(classpathRoot, "../../../apps/ApiDemos/bin");
+        File app = new File(appDir, "ApiDemos-debug.apk");
+
+        DesiredCapabilities capabilities = new DesiredCapabilities();
+        capabilities.setCapability(CapabilityType.BROWSER_NAME, "");
+        capabilities.setCapability("deviceName","Android Emulator");
+        capabilities.setCapability("platformVersion", "4.4");
+        capabilities.setCapability("platformName","Android");
+        capabilities.setCapability("app", app.getAbsolutePath());
+        capabilities.setCapability("appPackage", "com.example.android.apis");
+        capabilities.setCapability("appActivity", ".ApiDemos");
         return capabilities;
     }
 

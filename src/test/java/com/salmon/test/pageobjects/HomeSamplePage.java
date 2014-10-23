@@ -3,15 +3,16 @@ package com.salmon.test.pageobjects;
 import com.salmon.test.framework.PageObject;
 import org.openqa.selenium.By;
 
-/*Sample page object class which defines all the elements for a specific page.
-* Every  page object class should extend "PageObject" class
-* */
+/**
+ * Sample page object class which defines all the elements for a specific page.
+ * Every  Class which contains page objects should extend "PageObject" class
+ * This gives access to the webdriver object and utility methods
+ */
 public class HomeSamplePage extends PageObject {
-    //protected static final Logger LOG = LoggerFactory.getLogger(HomeSamplePage.class);
 
-    private  By headerSignInLink = By.id("headerSignInLink");
+    private By headerSignInLink = By.id("headerSignInLink");
 
-      public void clickSignInLink(){
+    public void clickSignInLink() {
         waitForExpectedElement(headerSignInLink).click();
     }
 

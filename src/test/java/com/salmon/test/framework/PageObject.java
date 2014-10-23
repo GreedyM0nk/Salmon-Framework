@@ -6,7 +6,6 @@ import org.openqa.selenium.*;
 import org.openqa.selenium.interactions.Actions;
 import org.openqa.selenium.support.ui.ExpectedCondition;
 import org.openqa.selenium.support.ui.ExpectedConditions;
-import org.openqa.selenium.support.ui.Wait;
 import org.openqa.selenium.support.ui.WebDriverWait;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
@@ -22,29 +21,44 @@ public class PageObject {
     protected static final Logger LOG = LoggerFactory.getLogger(PageObject.class);
 
 
-
     public PageObject() {
-
         this.webDriver = WebDriverHelper.getWebDriver();
         this.wait = new WebDriverWait(webDriver, DRIVER_WAIT_TIME);
     }
 
+    /**
+     * Returns the current Url from page
+     **/
     public String getCurrentUrl() {
         return webDriver.getCurrentUrl();
     }
 
+    /**
+    Returns the current page title from page
+    */
     public String getCurrentPageTitle() {
         return getWebDriver().getTitle();
     }
 
+    /**
+    Find the dynamic element wait until its visible
+    * @param by Element location found by css, xpath, id etc...
+    *
+    **/
     public WebElement waitForExpectedElement(final By by) {
-        Wait<WebDriver> wait = new WebDriverWait(getWebDriver(), DRIVER_WAIT_TIME);
+    //    Wait<WebDriver> wait = new WebDriverWait(getWebDriver(), DRIVER_WAIT_TIME);
         return wait.until(visibilityOfElementLocated(by));
     }
 
+    /**
+     Find the dynamic element wait until its visible for a specified time
+     * @param by Element location found by css, xpath, id etc...
+     * @param waitTimeInSeconds max time to wait until element is visible
+     *
+     **/
     public WebElement waitForExpectedElement(final By by, long waitTimeInSeconds) {
         try {
-            Wait<WebDriver> wait = new WebDriverWait(getWebDriver(), waitTimeInSeconds);
+            //Wait<WebDriver> wait = new WebDriverWait(getWebDriver(), waitTimeInSeconds);
             return wait.until(visibilityOfElementLocated(by));
         } catch (NoSuchElementException e) {
             return null;
