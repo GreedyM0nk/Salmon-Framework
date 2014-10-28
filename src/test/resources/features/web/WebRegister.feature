@@ -6,13 +6,10 @@
 
 @gui
 
-
-
 Feature: REGISTER:- As a new customer of Lloydspharmacy I would like to register so I can : -
   receive advance notice of promotions
   place orders and track their status
   register for Express Repeat Prescription Service
-
 
 
 
@@ -22,10 +19,10 @@ Feature: REGISTER:- As a new customer of Lloydspharmacy I would like to register
   Scenario:Perform a New registration for a customer
     Given I navigate to the Lloydspharmacy "HOME" page
     And i click on Sign In on the Home Page
+    And i click on Register on New Registration page
+
    # When I register as a new user
     #Then I am presented with an account summary screen
-
-
 
 
 

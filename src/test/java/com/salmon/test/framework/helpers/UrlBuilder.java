@@ -1,5 +1,8 @@
 package com.salmon.test.framework.helpers;
 
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
+
 import java.net.MalformedURLException;
 import java.net.URI;
 import java.net.URL;
@@ -8,12 +11,15 @@ public class UrlBuilder {
     private static  URL basePath;
     private static URL apiUrl;
 
+    private static final Logger LOG = LoggerFactory.getLogger(UrlBuilder.class);
+
+
     static {
         try {
             basePath = new URL(LoadProperties.getRunProps().getProperty("site.url"));
             apiUrl = new URL(LoadProperties.getRunProps().getProperty("api.url"));
         } catch (MalformedURLException e) {
-            e.printStackTrace();
+            LOG.error(e.getMessage());
         }
 
     }

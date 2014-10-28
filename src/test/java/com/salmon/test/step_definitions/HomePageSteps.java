@@ -14,5 +14,4 @@ public class HomePageSteps {
         homePage.clickSignInLink();
     }
 
-
 }
