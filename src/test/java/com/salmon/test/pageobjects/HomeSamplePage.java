@@ -10,7 +10,7 @@ import org.openqa.selenium.By;
  */
 public class HomeSamplePage extends PageObject {
 
-    private By headerSignInLink = By.id("headerSignInLink");
+    private By headerSignInLink = By.cssSelector("#headerSignInLink a");
 
     public void clickSignInLink() {
         waitForExpectedElement(headerSignInLink).click();
