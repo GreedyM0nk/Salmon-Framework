@@ -13,6 +13,7 @@ public class SignInSamplePage extends PageObject {
 private By registerButton = By.id("WC_AccountDisplay_links_3");
 
 
-    public void clickRegisterButton(){waitForExpectedElement(registerButton); }
+    public void clickRegisterButton(){waitForExpectedElement(registerButton);
+    }
 
 }

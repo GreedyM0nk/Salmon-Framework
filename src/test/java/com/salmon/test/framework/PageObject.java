@@ -18,7 +18,7 @@ public class PageObject {
 
     private static final long DRIVER_WAIT_TIME = 10;
 
-    protected static final Logger LOG = LoggerFactory.getLogger(PageObject.class);
+    private static final Logger LOG = LoggerFactory.getLogger(PageObject.class);
 
 
     public PageObject() {
@@ -46,7 +46,6 @@ public class PageObject {
     *
     **/
     public WebElement waitForExpectedElement(final By by) {
-    //    Wait<WebDriver> wait = new WebDriverWait(getWebDriver(), DRIVER_WAIT_TIME);
         return wait.until(visibilityOfElementLocated(by));
     }
 
@@ -58,11 +57,12 @@ public class PageObject {
      **/
     public WebElement waitForExpectedElement(final By by, long waitTimeInSeconds) {
         try {
-            //Wait<WebDriver> wait = new WebDriverWait(getWebDriver(), waitTimeInSeconds);
             return wait.until(visibilityOfElementLocated(by));
         } catch (NoSuchElementException e) {
+            LOG.info(e.getMessage());
             return null;
         } catch (TimeoutException e) {
+            LOG.info(e.getMessage());
             return null;
         }
     }
@@ -87,6 +87,7 @@ public class PageObject {
         try {
             new WebDriverWait(getWebDriver(), DRIVER_WAIT_TIME).until(ExpectedConditions.presenceOfElementLocated(by));
         } catch (TimeoutException exception) {
+            LOG.info(exception.getMessage());
             return false;
         }
         return true;
@@ -100,26 +101,6 @@ public class PageObject {
     protected boolean waitForElementToDisappear(By by) {
         return (new WebDriverWait(getWebDriver(), DRIVER_WAIT_TIME)).until(ExpectedConditions.invisibilityOfElementLocated(by));
     }
-
-//    public boolean waitForElementNotToPresent(final By by) {
-//        try {
-//            WebDriverWait webDriverWait = new WebDriverWait(webDriver, DRIVER_WAIT_TIME);
-//            webDriverWait.until(new Predicate<WebDriver>() {
-//                @Override
-//                public boolean apply(WebDriver webDriver) {
-//                    List<WebElement> elements = webDriver.findElements(by);
-//                    if (elements.size() > 0) {
-//                        return elements.get(0).isDisplayed();
-//                    }
-//                    return false;
-//                }
-//            });
-//            return true;
-//        } catch (TimeoutException e) {
-//            return false;
-//        }
-//    }
-
 
     public WebDriver getBrowserByPageTitle(String pageTitle) {
         for (String windowHandle : webDriver.getWindowHandles()) {

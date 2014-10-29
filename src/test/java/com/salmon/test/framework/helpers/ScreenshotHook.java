@@ -13,7 +13,7 @@ import java.util.Map;
 
 public class ScreenshotHook extends PageObject {
 
-    protected static final Logger LOG = LoggerFactory.getLogger(ScreenshotHook.class);
+    private static final Logger LOG = LoggerFactory.getLogger(ScreenshotHook.class);
 
     @After
     public void embedScreenshot(Scenario scenario) {
@@ -36,8 +36,7 @@ public class ScreenshotHook extends PageObject {
             LOG.error(wde.getMessage());
         } catch (ClassCastException wde) {
             LOG.error(wde.getMessage());
-        }
-        finally {
+        } finally {
             getWebDriver().switchTo().defaultContent();
         }
     }

@@ -2,6 +2,8 @@ package com.salmon.test.framework.helpers;
 
 import lombok.Getter;
 import org.apache.commons.lang3.StringUtils;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 
 import java.io.IOException;
 import java.io.InputStream;
@@ -9,6 +11,7 @@ import java.util.Properties;
 
 public  class LoadProperties extends WebDriverHelper {
     private static final String RUN_CONFIG_PROPERTIES = "/environment.properties";
+    private static  final Logger LOG = LoggerFactory.getLogger(LoadProperties.class);
     @Getter
     private static Properties runProps;
 
@@ -25,6 +28,7 @@ public  class LoadProperties extends WebDriverHelper {
             setUpEnvironmentURLFor("webdriver.chrome.driver");
 
         } catch (IOException e) {
+            LOG.info(e.getMessage());
         }
     }
 
