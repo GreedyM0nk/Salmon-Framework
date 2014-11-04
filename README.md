@@ -1,3 +1,4 @@
+![Salmon](/salmonlogo.png)
 ================================
 Salmon Test Automation Framework
 ================================
@@ -12,8 +13,9 @@ Test Automation Architect
 gkarvir@salmon.com
 
 For overall Testing queries please contact: -
-Head of Testing
 Nick Gee
+Head of Testing
+ngee@salmon.com
 
 To run, you will need to install maven, then:
 mvn clean install -P profile
@@ -43,7 +45,7 @@ The test automation framework is comprised of following tools and libraries
 
 Machine Configuration
 ====================
-Configure Ubuntu / Windows and setup 
+Configure Ubuntu / Windows and setup: - 
 *Java 7  
 *Git  
 *Maven  
