@@ -18,7 +18,7 @@ encapsulates the fields represented by a page.
 
 Tools & libraries
 =================
-The test automation framework is comprised of following tools and libraries
+The test automation framework is comprised of following tools and libraries  
 *Cucumber-JVM  
 *Custom Page Object Pattern and utility functions    
 *Selenium WebDriver  
