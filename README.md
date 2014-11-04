@@ -2,12 +2,18 @@
 ================================
 Salmon Test Automation Framework
 ================================
-This project is a template of Salmon's test automation framework 
+This project is a template for Salmon's test automation framework, which provides structured and standard way of 
+creating automated test scripts for GUI and API level tests across salmon projects  
 
-
-
-To run, you will need to install maven, then:
-mvn clean install -P profile
+The framework incorporates design principle of BDD (Behaviour driven development) which promotes
+ writing acceptance tests by describing behaviour of application under test from
+ the perspective of its stakeholders. 
+ Having test written in Natural language helps the Project Team 
+ (Product Owners, Business Analysts, Development and QA team) to understand and track the requirements
+ 
+Supports Custom Page Object model which represents the screens of AUT as a series of objects and 
+encapsulates the fields represented by a page.    
+    
 
 
 Tools & libraries
@@ -29,23 +35,27 @@ The test automation framework is comprised of following tools and libraries
 *Loggers  
 *Sonar (optional)  
 *Mysql (optional)  
-*Rest-Assured (optional)  
+*Rest-Assured (optional)    
 *DbUtils (optional)  
 
 
 Contact information
 ===================
-Test automation framework queries
+Overall Test & Test management support
+------------------------------------------
+Nick Gee
+--------
+Head of Testing  
+ngee@salmon.com  
+
+
+Test Automation framework support
+------------------------------------------
 Gaurav Karvir
 --------------
 Test Automation Architect  
 gkarvir@salmon.com  
 
-Overall Testing & Test management support
-Nick Gee
---------
-Head of Testing  
-ngee@salmon.com  
 
 
 Machine Configuration
@@ -80,7 +90,7 @@ File >> Setting >> Plugins >> Browser Repositories>
 *Git Integration
 *GitHub
 *Maven Integration
-*SonarQube
+*SonarQube (optionsl)
 
 Import Project
 --------------
@@ -88,11 +98,11 @@ File>Import Project>
 Browser to SalmonAutomationFramework
 
 
-AUT Setup Steps
+Framework Setup steps
 ============================
 URL and Browser Configuration
 Open "pom.xml" 
-Scroll to Profile section : - Choose desired profile e.g for running locally
+Scroll to Profile section : - Choose desired profile e.g "dev" for running locally
 
             <profile>
                            <id>dev</id>
@@ -113,6 +123,11 @@ Scroll to Profile section : - Choose desired profile e.g for running locally
                             <testToRun>**/*AT.class</testToRun>
                         </properties>
             </profile>
+
+
+Run
+========
+
 Report
-====================================
+=========
 A report will be generated at /target/cucumber-report/index.html
