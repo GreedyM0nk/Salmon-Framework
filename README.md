@@ -3,12 +3,25 @@ Salmon Test Automation Framework
 ================================
 This project is a template for Salmon's test automation framework 
 
+
+Contact information
+===================
+For any test automation framework queries please contact: -
+Gaurav Karvir
+Test Automation Architect
+gkarvir@salmon.com
+
+For overall Testing queries please contact: -
+Head of Testing
+Nick Gee
+
 To run, you will need to install maven, then:
 mvn clean install -P profile
 
 
 Tools & libraries
 =================
+The test automation framework is comprised of following tools and libraries
 *Cucumber-JVM  
 *Selenium WebDriver  
 *JAVA  
@@ -31,9 +44,9 @@ Tools & libraries
 Machine Configuration
 ====================
 Configure Ubuntu / Windows and setup 
-Java 7  
-Git  
-Maven  
+*Java 7  
+*Git  
+*Maven  
 
 
 

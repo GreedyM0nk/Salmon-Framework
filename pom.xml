@@ -8,20 +8,27 @@
     <artifactId>salmonAutomationFramework</artifactId>
     <version>1.0-SNAPSHOT</version>
 
-    <!-- Test Profiles define URL for AUT, Browser -->
+    <!-- Test Profiles, define URL for AUT, Browser -->
 
     <profiles>
         <!-- Development environment @ my local machine -->
         <profile>
             <id>dev</id>
             <properties>
-                <testToRun>**/*AT.class</testToRun>
+                <!-- Application under test-->
                 <site.url>http://www.sysstg.lloydspharmacy.com/</site.url>
+                <!-- Service under test-->
                 <api.url>http://www.dulux.com.sg</api.url>
+                <!-- AUT has default desired port-->
                 <site.port></site.port>
+                <!-- AUT has default base path-->
                 <site.basepath></site.basepath>
+                <!--Desired browser to run -->
                 <browser>firefox</browser>
+                <!--Location of Chrome Driver -->
                 <webdriver.chrome.driver>tools/chromedriver/linux64/chromedriver</webdriver.chrome.driver>
+                <!--To Run parallel Test suite specify the type of Run Files which can be run in parallel -->
+                <testToRun>**/*AT.class</testToRun>
             </properties>
         </profile>
 
@@ -29,14 +36,13 @@
         <profile>
             <id>single</id>
             <properties>
-                <testToRun>**/*Single.class</testToRun>
                 <site.url>http://www.sysstg.lloydspharmacy.com/</site.url>
                 <api.url>http://www.dulux.com.sg</api.url>
                 <site.port></site.port>
                 <site.basepath></site.basepath>
                 <browser>chrome</browser>
                 <webdriver.chrome.driver>tools/chromedriver/linux64/chromedriver</webdriver.chrome.driver>
-
+                <testToRun>**/*Single.class</testToRun>
             </properties>
         </profile>
 
@@ -44,13 +50,13 @@
         <profile>
             <id>deploy</id>
             <properties>
-                <testToRun>**/*JenkinsSuite.class</testToRun>
                 <site.url>http://www.sysstg.lloydspharmacy.com/</site.url>
                 <api.url>http://www.dulux.com.sg/</api.url>
                 <site.port></site.port>
                 <site.basepath></site.basepath>
                 <browser>firefox</browser>
                 <webdriver.chrome.driver>/usr/local/bin/chromedriver</webdriver.chrome.driver>
+                <testToRun>**/*JenkinsSuite.class</testToRun>
             </properties>
         </profile>
     </profiles>
@@ -172,8 +178,7 @@
     </build>
 
 
-
-<!-- All the test dependencies should be declared in this section -->
+    <!-- All the test dependencies should be declared in this section -->
 
     <dependencies>
 
