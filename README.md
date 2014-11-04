@@ -2,20 +2,9 @@
 ================================
 Salmon Test Automation Framework
 ================================
-This project is a template for Salmon's test automation framework 
+This project is a template of Salmon's test automation framework 
 
 
-Contact information
-===================
-For any test automation framework queries please contact: -
-Gaurav Karvir
-Test Automation Architect
-gkarvir@salmon.com
-
-For overall Testing queries please contact: -
-Nick Gee
-Head of Testing
-ngee@salmon.com
 
 To run, you will need to install maven, then:
 mvn clean install -P profile
@@ -24,7 +13,8 @@ mvn clean install -P profile
 Tools & libraries
 =================
 The test automation framework is comprised of following tools and libraries
-*Cucumber-JVM  
+*Cucumber-JVM
+*Custom Page Object Pattern and utility functions  
 *Selenium WebDriver  
 *JAVA  
 *Junit4  
@@ -43,15 +33,38 @@ The test automation framework is comprised of following tools and libraries
 *DbUtils (optional)  
 
 
+Contact information
+===================
+Test automation framework queries
+Gaurav Karvir
+--------------
+Test Automation Architect  
+gkarvir@salmon.com  
+
+Overall Testing & Test management support
+Nick Gee
+--------
+Head of Testing  
+ngee@salmon.com  
+
+
 Machine Configuration
 ====================
-Configure Ubuntu / Windows and setup: - 
+Configure Ubuntu / Windows and setup: -   
 *Java 7  
 *Git  
 *Maven  
 
 
+Get the latest Source Code
+===========================
+Open Terminal or command line
+cd to the desired folder where the test automation source code needs to be checkout
 
+Run command
+git clone https://github.com/salmontest/salmontest.git
+
+This will download the latest template source code
 
 IDE Configuration
 ==================
@@ -100,6 +113,6 @@ Scroll to Profile section : - Choose desired profile e.g for running locally
                             <testToRun>**/*AT.class</testToRun>
                         </properties>
             </profile>
-Report: -
+Report
 ====================================
 A report will be generated at /target/cucumber-report/index.html
