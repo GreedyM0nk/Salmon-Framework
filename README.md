@@ -1,7 +1,7 @@
 ================================
 Salmon Test Automation Framework
 ================================
-This project is template for Salmon's test automation framework 
+This project is a template for Salmon's test automation framework 
 
 To run, you will need to install maven, then:
 mvn clean install -P profile
