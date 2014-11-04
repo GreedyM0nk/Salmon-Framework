@@ -125,8 +125,29 @@ Scroll to Profile section : - Choose desired profile e.g "dev" for running local
             </profile>
 
 
-Run
-========
+Compile Build or Run Tests
+==========================
+
+Command Line
+
+cd to root ot salmonAutomationFramework project directory
+
+To clean and compile the build
+-----------------------------
+mvn clean install
+
+To run all tests parallel
+------------------------
+mvn clean install -P dev
+
+To run a single test with tags
+------------------------
+
+mvn clean install -Dcucumber.options="--tags @gui --tags ~@api" -P single
+
+** Note "~" before tag means this specific tag will not run
+
+
 
 Report
 =========
