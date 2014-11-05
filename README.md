@@ -178,24 +178,57 @@ Location: "/home/dev/src/salmonAutomationFramework/src/test/resources/features"
 Directory:  Separate directories for GUI and API tests, Group common features files in a 
 single directory    
 File Conventions:Meaning full name "WebRegister.feature"
+Example:   
+@gui
+Feature: REGISTER:- As a new customer of Lloydspharmacy I would like to register 
+Scenario:Perform a New registration for a customer
+    Given I navigate to the Lloydspharmacy "HOME" page
 
 Page Objects
 -------------------------------------------------------------------
-PageObjects are used to store the WebElements for a Web Page. 
+PageObjects are used to store the WebElements for a Web Page.
 A good practice is to have a separate class for every single WebPage.
 To avoid duplication for multiple pages which have common web page elements a Parent class can be created 
-and the subclass then inherit.   
+and the child class can then inherit.  
+Every Page  class extends "PageObject.class" to make use of the WebDriver Object and utility functions.  
+In case of Parent and Child Class, Parent class extends PageObject class and child class extends Parent class      
+   
 Location: /home/dev/src/salmonAutomationFramework/src/test/java/com/salmon/test/pageobjects
 Directory structure: Group common Page Objects classes in a single directory e.g Login Functionality Classes in Login Directory      
 File Conventions:Every Class file ends with Page.class (Homepage.class)  
 
+Example:   
+
+public class HomeSamplePage extends PageObject {
+
+    private By headerSignInLink = By.cssSelector("#headerSignInLink a");
+
+    public void clickSignInLink() {
+        waitForExpectedElement(headerSignInLink).click();
+    }
+}
+
+
 Step Definitions
 --------------------------------------------------------------------
 Every steps defined in Feature file needs to be implemented in Step Definitions Class
+
 Location: /home/dev/src/salmonAutomationFramework/src/test/java/com/salmon/test/step_definitions 
 Directory structure: Separate directories for GUI and API tests, Group common step definition files in a 
                      single directory    
-File Conventions:Every Class file ends with Steps.class (LoginSteps.class)
+File Conventions:Every Class file ends with Steps.class (LoginSteps.class)  
+
+Example:  
+
+public class HomePageSteps {
+
+   private HomeSamplePage homePage =  new HomeSamplePage();
+
+    @And("^i click on Sign In on the Home Page$")
+    public void i_click_on_Sign_In_on__the_Home_Page() throws Throwable {
+        homePage.clickSignInLink();
+    }
+}
 
 Run Test Suite
 --------------------------------------------------------------------

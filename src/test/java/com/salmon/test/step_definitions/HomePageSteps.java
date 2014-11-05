@@ -6,7 +6,7 @@ import cucumber.api.java.en.And;
 
 public class HomePageSteps {
 
-    HomeSamplePage homePage =  new HomeSamplePage();
+   private HomeSamplePage homePage =  new HomeSamplePage();
 
 
     @And("^i click on Sign In on the Home Page$")
