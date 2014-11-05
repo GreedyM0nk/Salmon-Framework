@@ -148,7 +148,98 @@ mvn clean install -Dcucumber.options="--tags @gui --tags ~@api" -P single
 ** Note "~" before tag means this specific tag will not run
 
 
-
 Report
-=========
+======
+
+Local report
+-------------
 A report will be generated at /target/cucumber-report/index.html
+
+Jenkins report
+--------------
+The report will be available as part of configured Jenkins test build  
+**Cucumber plugin for Jenkins needs to be installed
+
+
+
+
+
+Directory Structure
+===================
+
+
+Feature Files
+-------------------------------------------------------------------
+These files contains the acceptance criteria which are written in Gherkin Language and contains various scenarios.  
+The feature files are tagged with "@tagname" to group common feature files 
+
+File Extension:  *.feature    
+Location: "/home/dev/src/salmonAutomationFramework/src/test/resources/features"      
+Directory:  Separate directories for GUI and API tests, Group common features files in a 
+single directory    
+File Conventions:Meaning full name "WebRegister.feature"
+
+Page Objects
+-------------------------------------------------------------------
+PageObjects are used to store the WebElements for a Web Page. 
+A good practice is to have a separate class for every single WebPage.
+To avoid duplication for multiple pages which have common web page elements a Parent class can be created 
+and the subclass then inherit.   
+Location: /home/dev/src/salmonAutomationFramework/src/test/java/com/salmon/test/pageobjects
+Directory structure: Group common Page Objects classes in a single directory e.g Login Functionality Classes in Login Directory      
+File Conventions:Every Class file ends with Page.class (Homepage.class)  
+
+Step Definitions
+--------------------------------------------------------------------
+Every steps defined in Feature file needs to be implemented in Step Definitions Class
+Location: /home/dev/src/salmonAutomationFramework/src/test/java/com/salmon/test/step_definitions 
+Directory structure: Separate directories for GUI and API tests, Group common step definition files in a 
+                     single directory    
+File Conventions:Every Class file ends with Steps.class (LoginSteps.class)
+
+Run Test Suite
+--------------------------------------------------------------------
+/home/dev/src/salmonAutomationFramework/src/test/java/com/salmon/test
+
+
+
+
+├── src
+│   ├── main
+│   │   ├── java
+│   │   │   └── com
+│   │   │       └── salmon
+│   │   │           └── test
+│   │   └── resources
+│   └── test
+│       ├── java
+│       │   └── com
+│       │       └── salmon
+│       │           └── test
+│       │               ├── enums
+│       │               ├── framework
+│       │               │   └── helpers
+│       │               ├── models
+│       │               ├── pageobjects
+│       │               ├── services
+│       │               └── step_definitions
+│       └── resources
+│           └── features
+│               ├── api
+│               └── web
+├── target
+│   
+└── tools
+    ├── chromedriver
+    │   ├── linux64
+    │   └── mac
+    └── phantomjs
+        ├── linux64
+        │   ├── bin
+        │   └── examples
+        └── mac
+            ├── bin
+            └── examples
+
+
+
