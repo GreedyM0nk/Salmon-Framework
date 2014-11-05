@@ -28,7 +28,7 @@
                 <!--Location of Chrome Driver -->
                 <webdriver.chrome.driver>tools/chromedriver/linux64/chromedriver</webdriver.chrome.driver>
                 <!--To Run parallel Test suite specify the type of Run Files which can be run in parallel -->
-                <testToRun>**/*AT.class</testToRun>
+                <testToRun>**/*ATSuite.class</testToRun>
             </properties>
         </profile>
 
@@ -42,7 +42,7 @@
                 <site.basepath></site.basepath>
                 <browser>chrome</browser>
                 <webdriver.chrome.driver>tools/chromedriver/linux64/chromedriver</webdriver.chrome.driver>
-                <testToRun>**/*Single.class</testToRun>
+                <testToRun>**/*SingleSuite.class</testToRun>
             </properties>
         </profile>
 

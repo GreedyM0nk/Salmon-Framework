@@ -12,7 +12,7 @@ The framework incorporates design principle of BDD (Behaviour driven development
  (Product Owners, Business Analysts, Development and QA team) to understand and track the requirements
  
 Supports Custom Page Object model which represents the screens of AUT as a series of objects and 
-encapsulates the fields represented by a page.    
+encapsulates the fields represented by a page which ultimately avoids duplication and improves code maintainability and readability.
     
 
 
@@ -233,14 +233,23 @@ public class HomePageSteps {
 
 Run Test Suite
 --------------------------------------------------------------------
-To run grou
+Test Suites are used to run a group of Tests which are tagged and represented in form of Feature files & Scenarios
+
+Location: /home/dev/src/salmonAutomationFramework/src/test/java/com/salmon/test
+File Conventions:Every Class file ends with Suite.class (RunWebAT.class)  
+
+
 @RunWith(Cucumber.class)
-@Cucumber.Options(features = "target/test-classes", tags = {"@gui"}, format = {"pretty","html:target/cucumber-report/run1at","json:target/cucumber-report/run1at/cucumber.json"})
+@Cucumber.Options(features = "target/test-classes", tags = {"@gui,@api}, format = {"pretty","html:target/cucumber-report/run1at","json:target/cucumber-report/run1at/cucumber.json"})
 public class RunWebATSuite {
 }
 
+where: -  
+features: represent the location of feature files from the compiled build  
+tags:  multiple tags can be specified by comma separated denotation, if a specific tag needs to be excluded then this 
+        can be specified by "~" . e.g "~@api" feature files tagged with "~api" will not be run as a part of Test Suite.  
 
-/home/dev/src/salmonAutomationFramework/src/test/java/com/salmon/test
+format: html and json reports are created. 
 
 
 
