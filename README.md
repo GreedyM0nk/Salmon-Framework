@@ -164,8 +164,8 @@ The report will be available as part of configured Jenkins test build
 
 
 
-Directory Structure
-===================
+Getting Started
+===========================
 
 
 Feature Files
@@ -183,6 +183,7 @@ Example:
 Feature: REGISTER:- As a new customer of Lloydspharmacy I would like to register 
 Scenario:Perform a New registration for a customer
     Given I navigate to the Lloydspharmacy "HOME" page
+
 
 Page Objects
 -------------------------------------------------------------------
@@ -232,6 +233,13 @@ public class HomePageSteps {
 
 Run Test Suite
 --------------------------------------------------------------------
+To run grou
+@RunWith(Cucumber.class)
+@Cucumber.Options(features = "target/test-classes", tags = {"@gui"}, format = {"pretty","html:target/cucumber-report/run1at","json:target/cucumber-report/run1at/cucumber.json"})
+public class RunWebATSuite {
+}
+
+
 /home/dev/src/salmonAutomationFramework/src/test/java/com/salmon/test
 
 
