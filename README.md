@@ -100,7 +100,7 @@ Browser to SalmonAutomationFramework
 
 Framework Setup steps
 ============================
-URL and Browser Configuration
+URL,  Browser Configuration, Test Suites to Run
 Open "pom.xml" 
 Scroll to Profile section : - Choose desired profile e.g "dev" for running locally
 
@@ -240,16 +240,15 @@ File Conventions:Every Class file ends with Suite.class (RunWebAT.class)
 
 
 @RunWith(Cucumber.class)
-@Cucumber.Options(features = "target/test-classes", tags = {"@gui,@api}, format = {"pretty","html:target/cucumber-report/run1at","json:target/cucumber-report/run1at/cucumber.json"})
+@Cucumber.Options(features = "target/test-classes", tags = {"@gui,@api}, format = {"pretty","html:target/cucumber-report/runwebat","json:target/cucumber-report/runwebat/cucumber.json"})
 public class RunWebATSuite {
 }
 
-where: -  
+Where: -  
 features: represent the location of feature files from the compiled build  
 tags:  multiple tags can be specified by comma separated denotation, if a specific tag needs to be excluded then this 
         can be specified by "~" . e.g "~@api" feature files tagged with "~api" will not be run as a part of Test Suite.  
-
-format: html and json reports are created. 
+format: html and json reports are created. if a TesSuite is renamed then change the reporting directory name for both reports   
 
 
 

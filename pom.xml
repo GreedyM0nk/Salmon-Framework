@@ -8,7 +8,7 @@
     <artifactId>salmonAutomationFramework</artifactId>
     <version>1.0-SNAPSHOT</version>
 
-    <!-- Test Profiles, define URL for AUT, Browser -->
+    <!-- Test Profiles, define URL for AUT, Browser and Test Suites -->
 
     <profiles>
         <!-- Development environment @ my local machine -->
