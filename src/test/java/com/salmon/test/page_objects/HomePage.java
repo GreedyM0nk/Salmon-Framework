@@ -1,4 +1,4 @@
-package com.salmon.test.pageobjects;
+package com.salmon.test.page_objects;
 
 import com.salmon.test.framework.PageObject;
 import org.openqa.selenium.By;
@@ -12,9 +12,14 @@ import org.openqa.selenium.By;
 public class HomePage extends PageObject {
 
     private By headerSignInLink = By.cssSelector("#headerSignInLink a");
+    private By headerLogoutLink = By.id("headerLogout");
 
     public void clickSignInLink() {
         waitForExpectedElement(headerSignInLink).click();
     }
 
+    public void clickSignOutLink() {
+        waitForExpectedElement(headerLogoutLink).click();
+
+    }
 }

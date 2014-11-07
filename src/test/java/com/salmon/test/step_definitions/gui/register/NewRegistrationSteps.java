@@ -2,7 +2,7 @@ package com.salmon.test.step_definitions.gui.register;
 
 
 import com.salmon.test.framework.helpers.utils.RandomGenerator;
-import com.salmon.test.pageobjects.NewRegistrationPage;
+import com.salmon.test.page_objects.NewRegistrationPage;
 import cucumber.api.java.en.When;
 import lombok.Getter;
 

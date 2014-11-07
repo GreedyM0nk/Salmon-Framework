@@ -1,4 +1,4 @@
-package com.salmon.test.pageobjects;
+package com.salmon.test.page_objects;
 
 import com.salmon.test.framework.PageObject;
 import org.openqa.selenium.By;
