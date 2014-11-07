@@ -1,4 +1,4 @@
-package com.salmon.test.step_definitions;
+package com.salmon.test.step_definitions.api;
 
 import com.jayway.restassured.http.ContentType;
 import com.jayway.restassured.response.Response;

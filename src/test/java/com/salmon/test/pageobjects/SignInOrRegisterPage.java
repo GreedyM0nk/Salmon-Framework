@@ -9,13 +9,12 @@ import org.openqa.selenium.By;
  */
 
 
-public class SignInSamplePage extends PageObject {
+public class SignInOrRegisterPage extends PageObject {
 
     private By registerButton = By.id("WC_AccountDisplay_links_3");
 
-
     public void clickRegisterButton() {
-        waitForExpectedElement(registerButton);
+        waitForExpectedElement(registerButton).click();
     }
 
 }

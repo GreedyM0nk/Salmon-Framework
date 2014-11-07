@@ -71,6 +71,7 @@
         <picocontainer>2.14.2</picocontainer>
         <rest-assured>2.3.4</rest-assured>
         <commons-io>1.3.2</commons-io>
+        <commons-lang>3.3.2</commons-lang>
         <lombok>1.14.8</lombok>
         <hamcrest-all>1.3</hamcrest-all>
         <appium-java-client>2.0.0</appium-java-client>
@@ -80,6 +81,7 @@
         <maven-resource-plugin>2.3</maven-resource-plugin>
         <maven-compiler-plugin>2.5.1</maven-compiler-plugin>
         <utf-8>UTF-8</utf-8>
+        <joda-time>2.5</joda-time>
         <java-version>1.7</java-version>
     </properties>
 
@@ -243,11 +245,29 @@
         </dependency>
         <!-- Api Level Testing -->
 
+        <!--Commons-IO contains utility classes, stream implementations, file filter,-->
         <dependency>
             <groupId>org.apache.commons</groupId>
             <artifactId>commons-io</artifactId>
             <version>${commons-io}</version>
         </dependency>
+        <!--Commons-IO contains utility classes, stream implementations, file filter,-->
+
+        <!--Commons-lang3   a package of Java utility classes -->
+        <dependency>
+            <groupId>org.apache.commons</groupId>
+            <artifactId>commons-lang3</artifactId>
+            <version>${commons-lang}</version>
+        </dependency>
+        <!--Commons-lang3   a package of Java utility classes -->
+
+        <!-- Date Time support -->
+        <dependency>
+            <groupId>joda-time</groupId>
+            <artifactId>joda-time</artifactId>
+            <version>${joda-time}</version>
+        </dependency>
+        <!-- Date Time support -->
 
         <!--Logger -->
         <dependency>

@@ -9,7 +9,7 @@ import org.openqa.selenium.By;
  * This gives access to the webdriver object and utility methods
  * USE CSS,ID,NAME,CLASSNAME selectors instead of xpath
  */
-public class HomeSamplePage extends PageObject {
+public class HomePage extends PageObject {
 
     private By headerSignInLink = By.cssSelector("#headerSignInLink a");
 

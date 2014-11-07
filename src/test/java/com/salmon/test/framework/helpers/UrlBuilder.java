@@ -32,11 +32,6 @@ public class UrlBuilder {
         return createApiUrl(endpoint);
     }
 
-    public static URL getTwitterUsersInXml()  {
-        return createUrl("/1/users/show.xml");
-    }
-
-
     public static URI getBasePathURI() {
         return URI.create(LoadProperties.getRunProps().getProperty(""));
     }

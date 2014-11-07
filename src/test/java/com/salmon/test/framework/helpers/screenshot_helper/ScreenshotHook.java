@@ -1,4 +1,4 @@
-package com.salmon.test.framework.helpers;
+package com.salmon.test.framework.helpers.screenshot_helper;
 
 import com.salmon.test.framework.PageObject;
 import cucumber.api.Scenario;
@@ -18,13 +18,13 @@ public class ScreenshotHook extends PageObject {
     @After
     public void embedScreenshot(Scenario scenario) {
         try {
-            Map<String, Object> screenShots = Screenshots.getScreenShotsForCurrentTest();
+            Map<String, Object> screenShots = ScreenshotHelper.getScreenShotsForCurrentTest();
             for (Map.Entry<String, Object> screenShot : screenShots.entrySet()) {
                 scenario.write(screenShot.getKey());
                 scenario.embed((byte[]) screenShot.getValue(), "image/png");
             }
 
-            Screenshots.tidyUpAfterTestRun();
+            ScreenshotHelper.tidyUpAfterTestRun();
 
             if (scenario.isFailed()) {
                 scenario.write(getWebDriver().getCurrentUrl());

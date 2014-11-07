@@ -17,9 +17,15 @@ Feature: REGISTER:- As a new customer of Lloydspharmacy I would like to register
 #Scenarios are represented in Given When Then syntax
 
   Scenario:Perform a New registration for a customer
-    Given I navigate to the Lloydspharmacy "HOME" page
-    And i click on Sign In on the Home Page
-    And i click on Register on New Registration page
+    Given i navigate to the Lloydspharmacy "HOME" page
+    And i click <"SIGN_IN"> on the Home Page
+    And i click on Register for New Registration
+    When i register a customer on New Registration page
+    
+
+
+
+
 
    # When I register as a new user
     #Then I am presented with an account summary screen
