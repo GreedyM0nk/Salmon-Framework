@@ -20,7 +20,8 @@ Feature: REGISTER:- As a new customer of Lloydspharmacy I would like to register
     Given i navigate to the Lloydspharmacy "HOME" page
     And i click <"SIGN_IN"> on the Home Page
     And i click on Register for New Registration
-    When i register a customer on New Registration page
+    When i fill in the registration form on New Registration page
+    Then i am registered successfully and can view "My Account Summary" page
     
 
 

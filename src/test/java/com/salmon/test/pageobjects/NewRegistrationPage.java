@@ -85,7 +85,7 @@ public class NewRegistrationPage extends PageObject {
     }
 
     public WebElement confirmEmailAddressText() {
-        return waitForExpectedElement(emailText);
+        return waitForExpectedElement(confirmEmailText);
     }
 
 
