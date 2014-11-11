@@ -6,9 +6,7 @@ import cucumber.api.java.en.Then;
 
 import static org.junit.Assert.assertEquals;
 
-/**
- * Created by dev on 11/7/14.
- */
+
 public class MyAccountSummarySteps {
 
     private NewRegistrationSteps newRegistrationSteps;

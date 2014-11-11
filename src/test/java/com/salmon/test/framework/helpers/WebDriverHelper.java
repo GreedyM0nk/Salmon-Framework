@@ -19,6 +19,7 @@ import java.util.logging.Level;
 
 public class WebDriverHelper extends EventFiringWebDriver {
 
+    
     private static WebDriver REAL_DRIVER = null;
     private static String BROWSER;
     private static final Dimension BROWSER_WINDOW_SIZE = new Dimension(1280, 1024);
@@ -35,8 +36,8 @@ public class WebDriverHelper extends EventFiringWebDriver {
     }
 
 
+
     static {
-        LoadProperties.loadRunConfigProps();
         BROWSER = LoadProperties.getRunProps().getProperty("browser");
         if (BROWSER.equalsIgnoreCase("chrome")) {
             REAL_DRIVER = startChromeDriver();
@@ -110,9 +111,5 @@ public class WebDriverHelper extends EventFiringWebDriver {
     public static WebDriver getWebDriver() {
         return REAL_DRIVER;
     }
-
-
-
-
 
 }

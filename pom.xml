@@ -14,6 +14,9 @@
         <!-- Development environment @ my local machine -->
         <profile>
             <id>dev</id>
+            <activation>
+                <activeByDefault>true</activeByDefault>
+            </activation>
             <properties>
                 <!-- Application under test-->
                 <site.url>http://www.sysstg.lloydspharmacy.com/</site.url>
@@ -29,6 +32,13 @@
                 <webdriver.chrome.driver>tools/chromedriver/linux64/chromedriver</webdriver.chrome.driver>
                 <!--To Run parallel Test suite specify the type of Run Files which can be run in parallel -->
                 <testToRun>**/*ATSuite.class</testToRun>
+
+                <!--Database Params -->
+                <jdbcUrl>jdbc:mysql://localhost:3306/sonar</jdbcUrl>
+                <jdbcDriver>com.mysql.jdbc.Driver</jdbcDriver>
+                <jdbcUser>root</jdbcUser>
+                <jdbcPwd></jdbcPwd>
+
             </properties>
         </profile>
 
@@ -43,6 +53,11 @@
                 <browser>chrome</browser>
                 <webdriver.chrome.driver>tools/chromedriver/linux64/chromedriver</webdriver.chrome.driver>
                 <testToRun>**/*SingleSuite.class</testToRun>
+                <!--Database Params -->
+                <jdbcUrl>jdbc:mysql://localhost:3306/sonar</jdbcUrl>
+                <jdbcDriver>com.mysql.jdbc.Driver</jdbcDriver>
+                <jdbcUser>root</jdbcUser>
+                <jdbcPwd></jdbcPwd>
             </properties>
         </profile>
 
@@ -57,6 +72,11 @@
                 <browser>firefox</browser>
                 <webdriver.chrome.driver>/usr/local/bin/chromedriver</webdriver.chrome.driver>
                 <testToRun>**/*JenkinsSuite.class</testToRun>
+                <!--Database Params -->
+                <jdbcUrl>jdbc:mysql://localhost:3306/sonar</jdbcUrl>
+                <jdbcDriver>com.mysql.jdbc.Driver</jdbcDriver>
+                <jdbcUser>root</jdbcUser>
+                <jdbcPwd></jdbcPwd>
             </properties>
         </profile>
     </profiles>

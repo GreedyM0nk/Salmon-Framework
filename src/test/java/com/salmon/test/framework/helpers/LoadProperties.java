@@ -9,24 +9,22 @@ import java.io.IOException;
 import java.io.InputStream;
 import java.util.Properties;
 
-public  class LoadProperties extends WebDriverHelper {
-    private static final String RUN_CONFIG_PROPERTIES = "/environment.properties";
+public  class LoadProperties {
     private static  final Logger LOG = LoggerFactory.getLogger(LoadProperties.class);
     @Getter
     private static Properties runProps;
 
-    public static void loadRunConfigProps() {
+    public static void loadRunConfigProps(String configPropertyFileLocation) {
+
         runProps = new Properties();
-        try (InputStream is = WebDriverHelper.class.getResourceAsStream(RUN_CONFIG_PROPERTIES)) {
-            runProps.load(is);
+        try (InputStream inputStream = LoadProperties.class.getResourceAsStream(configPropertyFileLocation)) {
+            runProps.load(inputStream);
             setUpEnvironmentURLFor("site.url");
             setUpEnvironmentURLFor("api.url");
             setUpEnvironmentURLFor("site.port");
             setUpEnvironmentURLFor("site.basepath");
             setUpEnvironmentURLFor("browser");
-            setUpEnvironmentURLFor("browser");
             setUpEnvironmentURLFor("webdriver.chrome.driver");
-
         } catch (IOException e) {
             LOG.info(e.getMessage());
         }

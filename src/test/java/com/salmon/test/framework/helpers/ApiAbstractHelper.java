@@ -5,7 +5,9 @@ import com.jayway.restassured.RestAssured;
 import com.jayway.restassured.response.Header;
 import lombok.Getter;
 
-    /*Every Api Step definition class should extend this class*/
+/**
+ * Every Api Step definition class should extend this class
+ */
 
 @Getter
 public abstract class ApiAbstractHelper {
@@ -19,13 +21,14 @@ public abstract class ApiAbstractHelper {
     static Header acceptXml = new Header("Accept", APPLICATION_XML);
     static Header acceptHtml = new Header("Accept", TEXT_HTML);
     static Header acceptCsv = new Header("Accept", TEXT_CSV);
-    static Header acceptWrappedJson = new Header("Accept",WRAPPED_JSON);
+    static Header acceptWrappedJson = new Header("Accept", WRAPPED_JSON);
+    private static final String RUN_CONFIG_PROPERTIES = "/environment.properties";
 
 
     /*Initial setup and configuration for Api*/
 
     public void setUp() throws Exception {
-        LoadProperties.loadRunConfigProps();
+        //     LoadProperties.loadRunConfigProps(RUN_CONFIG_PROPERTIES);
         RestAssured.baseURI = LoadProperties.getRunProps().getProperty("api.url");
         RestAssured.port = Integer.parseInt(LoadProperties.getRunProps().getProperty("site.port"));
         RestAssured.basePath = LoadProperties.getRunProps().getProperty("site.basepath");

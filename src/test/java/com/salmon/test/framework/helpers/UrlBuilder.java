@@ -12,10 +12,12 @@ public class UrlBuilder {
     private static URL apiUrl;
 
     private static final Logger LOG = LoggerFactory.getLogger(UrlBuilder.class);
+    private static final String RUN_CONFIG_PROPERTIES = "/environment.properties";
 
 
     static {
         try {
+            LoadProperties.loadRunConfigProps(RUN_CONFIG_PROPERTIES);
             basePath = new URL(LoadProperties.getRunProps().getProperty("site.url"));
             apiUrl = new URL(LoadProperties.getRunProps().getProperty("api.url"));
         } catch (MalformedURLException e) {
