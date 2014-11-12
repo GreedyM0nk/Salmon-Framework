@@ -13,10 +13,5 @@ public class NavigationSteps {
         if (pageName.equals("HOME")){
                 UrlBuilder.startAtHomePage();
             }
-//        List results = DatabaseHelper.executeQuery("select * from users");
-//
-//        for (Object result : results) {
-//            System.out.println(result.toString());
-//        }
     }
 }

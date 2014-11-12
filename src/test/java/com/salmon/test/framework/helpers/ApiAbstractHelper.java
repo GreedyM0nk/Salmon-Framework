@@ -22,13 +22,11 @@ public abstract class ApiAbstractHelper {
     static Header acceptHtml = new Header("Accept", TEXT_HTML);
     static Header acceptCsv = new Header("Accept", TEXT_CSV);
     static Header acceptWrappedJson = new Header("Accept", WRAPPED_JSON);
-    private static final String RUN_CONFIG_PROPERTIES = "/environment.properties";
-
 
     /*Initial setup and configuration for Api*/
 
     public void setUp() throws Exception {
-        //     LoadProperties.loadRunConfigProps(RUN_CONFIG_PROPERTIES);
+
         RestAssured.baseURI = LoadProperties.getRunProps().getProperty("api.url");
         RestAssured.port = Integer.parseInt(LoadProperties.getRunProps().getProperty("site.port"));
         RestAssured.basePath = LoadProperties.getRunProps().getProperty("site.basepath");

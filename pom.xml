@@ -36,8 +36,8 @@
                 <!--Database Params -->
                 <jdbcUrl>jdbc:mysql://localhost:3306/sonar</jdbcUrl>
                 <jdbcDriver>com.mysql.jdbc.Driver</jdbcDriver>
-                <jdbcUser>root</jdbcUser>
-                <jdbcPwd></jdbcPwd>
+                <jdbcUser>sonar</jdbcUser>
+                <jdbcPwd>sonar</jdbcPwd>
 
             </properties>
         </profile>
@@ -334,7 +334,12 @@
             <version>${common-db-utils}</version>
         </dependency>
         <!-- database connectivity-->
-
-
+        <!--mysql database driver-->
+        <dependency>
+            <groupId>mysql</groupId>
+            <artifactId>mysql-connector-java</artifactId>
+            <version>5.1.6</version>
+        </dependency>
+        <!--mysql database driver-->
     </dependencies>
 </project>

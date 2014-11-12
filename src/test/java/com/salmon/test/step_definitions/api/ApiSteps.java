@@ -3,6 +3,7 @@ package com.salmon.test.step_definitions.api;
 import com.jayway.restassured.http.ContentType;
 import com.jayway.restassured.response.Response;
 import com.salmon.test.framework.helpers.ApiAbstractHelper;
+import com.salmon.test.framework.helpers.DatabaseHelper;
 import com.salmon.test.framework.helpers.UrlBuilder;
 import cucumber.api.java.en.Then;
 import cucumber.api.java.en.When;
@@ -15,7 +16,9 @@ import static com.jayway.restassured.path.json.JsonPath.from;
 import static junit.framework.Assert.assertEquals;
 import static junit.framework.Assert.assertTrue;
 
-/* Step Definition implementation class for Cucumber Steps defined in Feature file*/
+/**
+ *  Step Definition implementation class for Cucumber Steps defined in Feature file
+ */
 
 public class ApiSteps extends ApiAbstractHelper {
 
@@ -27,8 +30,15 @@ public class ApiSteps extends ApiAbstractHelper {
 
     @When("^I perform GET request for \"([^\"]*)\" endpoint$")
     public void I_perform_GET_request_for_endpoint(String endpoint) throws Throwable {
+
         given().contentType(ContentType.JSON);
         response = when().get(UrlBuilder.getApiUrlForEndPoint(endpoint));
+
+        List results = DatabaseHelper.executeQuery("select * from users");
+        for (Object result : results) {
+            System.out.println(result.toString());
+        }
+
     }
 
     /*   Verify HTTP Status code from response*/

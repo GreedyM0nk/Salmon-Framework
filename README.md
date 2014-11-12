@@ -34,10 +34,9 @@ The test automation framework is comprised of following tools and libraries
 *Hamcrest  
 *Loggers  
 *Sonar (optional)  
-*Mysql (optional)  
+*DbUtils Mysql (optional)  
 *Rest-Assured (optional)    
-*DbUtils (optional)  
-
+  
 
 Contact information
 ===================

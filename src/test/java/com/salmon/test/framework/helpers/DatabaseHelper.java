@@ -17,11 +17,15 @@ public class DatabaseHelper {
     private static  final Logger LOG = LoggerFactory.getLogger(DatabaseHelper.class);
 
 
+
+
     public static List executeQuery(String sqlQuery) throws SQLException {
         conn = setUpConnection();
         QueryRunner run = new QueryRunner();
         return run.query(conn, sqlQuery, new MapListHandler());
     }
+
+
 
     private static Connection setUpConnection() {
         String jdbcUrl = LoadProperties.getRunProps().getProperty("jdbcUrl");
@@ -34,6 +38,7 @@ public class DatabaseHelper {
             return DriverManager.getConnection(jdbcUrl, jdbcUser, jdbcPwd);
         } catch (SQLException se) {
             LOG.info(se.getMessage());
+
 
         } finally {
             DbUtils.closeQuietly(conn);
