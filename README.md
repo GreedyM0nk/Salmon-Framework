@@ -125,6 +125,14 @@ cd to test root directory
 run "mvn clean eclipse:eclipse" 
 
 
+Plugin configuration for Cucumber Feature
+Open Run Configurations
+Select Cucumber Feature and create one new configuration
+Project: salmonAutomationFramework
+Feature: src/salmonAutomationFramework/src/test/resources/features
+Glue:  com.salmon.test.step_definitions
+Repors:  monochrome, pretty
+
 Framework Setup steps
 ============================
 URL,  Browser Configuration, Test Suites to Run
@@ -161,11 +169,17 @@ cd to root ot salmonAutomationFramework project directory
 
 To clean and compile the build
 -----------------------------
-mvn clean install
+mvn clean install -DskipTests
 
 To run all tests parallel
 ------------------------
-mvn clean install -P dev
+mvn clean install  
+
+OR
+
+mvn clean install -P dev  
+
+*Note -P dev is default profile hence doesn't need to be specified for every run 
 
 To run a single test with tags
 ------------------------
