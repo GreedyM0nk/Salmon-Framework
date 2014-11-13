@@ -4,16 +4,17 @@ import com.jayway.restassured.http.ContentType;
 import com.jayway.restassured.response.Response;
 import com.salmon.test.framework.helpers.ApiHelper;
 import com.salmon.test.framework.helpers.UrlBuilder;
+
 import cucumber.api.java.en.Then;
 import cucumber.api.java.en.When;
 
 import java.util.List;
 
+import org.junit.Assert;
+
 import static com.jayway.restassured.RestAssured.given;
 import static com.jayway.restassured.RestAssured.when;
 import static com.jayway.restassured.path.json.JsonPath.from;
-import static junit.framework.Assert.assertEquals;
-import static junit.framework.Assert.assertTrue;
 
 /**
  *  Step Definition implementation class for Cucumber Steps defined in Feature file
@@ -38,7 +39,7 @@ public class ApiSteps extends ApiHelper {
 
     @Then("^I get a (\\d+) http status code$")
     public void I_get_a_http_status_code(int statusCodeExpected) throws Throwable {
-        assertEquals("Success Response", statusCodeExpected,response.statusCode());
+        Assert.assertEquals("Success Response", statusCodeExpected,response.statusCode());
     }
 
 
@@ -55,7 +56,7 @@ public class ApiSteps extends ApiHelper {
     @Then("^the colour collections contains colour name$")
     public void the_colour_collections_contains_colour_name() throws Throwable {
         List<String> colourNames = from(response.asString()).get("colors.name");
-        assertTrue(colourNames.size() >= 0);
+        Assert.assertTrue(colourNames.size() >= 0);
 
     }
 
