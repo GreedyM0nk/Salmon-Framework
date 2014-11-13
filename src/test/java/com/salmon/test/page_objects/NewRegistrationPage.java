@@ -49,11 +49,11 @@ public class NewRegistrationPage extends PageObject {
     }
 
     public WebElement passwordText() {
-        return waitForExpectedElement(passwordText);
+        return getWebDriver().findElement(passwordText);
     }
 
     public WebElement verifyPasswordText() {
-        return waitForExpectedElement(verifyPasswordText);
+        return getWebDriver().findElement(verifyPasswordText);
     }
 
 
@@ -62,30 +62,30 @@ public class NewRegistrationPage extends PageObject {
     }
 
     public WebElement firstNameText() {
-        return waitForExpectedElement(firstNameText);
+        return getWebDriver().findElement(firstNameText);
     }
     public WebElement lastNameText() {
-        return waitForExpectedElement(lastNameText);
+        return getWebDriver().findElement(lastNameText);
     }
     public WebElement postCodeText() {
-        return waitForExpectedElement(postCodeText);
+        return getWebDriver().findElement(postCodeText);
     }
 
     public WebElement address1Text() {
-        return waitForExpectedElement(address1Text);
+        return getWebDriver().findElement(address1Text);
     }
 
     public WebElement townOrCityText() {
-        return waitForExpectedElement(townOrCityText);
+        return getWebDriver().findElement(townOrCityText);
     }
 
 
     public WebElement emailAddressText() {
-        return waitForExpectedElement(emailText);
+        return getWebDriver().findElement(emailText);
     }
 
     public WebElement confirmEmailAddressText() {
-        return waitForExpectedElement(confirmEmailText);
+        return getWebDriver().findElement(confirmEmailText);
     }
 
 
@@ -94,16 +94,16 @@ public class NewRegistrationPage extends PageObject {
     }
 
     public Select birthMonthText() {
-        return new Select(waitForExpectedElement(birthMonth));
+        return new Select(getWebDriver().findElement(birthMonth));
     }
 
     public Select birthYearText() {
-        return new Select(waitForExpectedElement(birthYear));
+        return new Select(getWebDriver().findElement(birthYear));
     }
 
 
     public void acceptTermsAndConditions(boolean yesOrNo) {
-        WebElement termsAndConditionsWebElement = waitForExpectedElement(termsAndConditionsCheckBox);
+        WebElement termsAndConditionsWebElement = getWebDriver().findElement(termsAndConditionsCheckBox);
         boolean selected = termsAndConditionsWebElement.isSelected();
         if (yesOrNo && !selected) {
             termsAndConditionsWebElement.click();

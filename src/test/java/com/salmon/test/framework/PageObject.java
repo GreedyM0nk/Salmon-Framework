@@ -72,12 +72,11 @@ public class PageObject {
 
             @Override
             public WebElement apply(WebDriver driver) {
-                try {
-                    Thread.sleep(1000);
-                } catch (InterruptedException e) {
-                    LOG.error(e.getMessage());
-                }
-                WebElement element = getWebDriver().findElement(by);
+            	 try {
+                     Thread.sleep(500);
+                 } catch (InterruptedException e) {
+                     LOG.error(e.getMessage());
+                 }                WebElement element = getWebDriver().findElement(by);
                 return element.isDisplayed() ? element : null;
             }
         };
