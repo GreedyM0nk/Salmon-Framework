@@ -16,11 +16,8 @@ public class DatabaseHelper {
     private static Connection conn = null;
     private static  final Logger LOG = LoggerFactory.getLogger(DatabaseHelper.class);
     private static final String jdbcUrl;
-
     private static final String jdbcDriver;
-
     private static final String jdbcUser;
-
     private static final String jdbcPwd;
 
     static {

@@ -10,7 +10,6 @@ import java.net.URL;
 public class UrlBuilder {
     private static  URL basePath;
     private static URL apiUrl;
-
     private static final Logger LOG = LoggerFactory.getLogger(UrlBuilder.class);
     private static final String RUN_CONFIG_PROPERTIES = "/environment.properties";
 

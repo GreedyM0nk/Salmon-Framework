@@ -2,7 +2,7 @@ package com.salmon.test.step_definitions.api;
 
 import com.jayway.restassured.http.ContentType;
 import com.jayway.restassured.response.Response;
-import com.salmon.test.framework.helpers.ApiAbstractHelper;
+import com.salmon.test.framework.helpers.ApiHelper;
 import com.salmon.test.framework.helpers.UrlBuilder;
 import cucumber.api.java.en.Then;
 import cucumber.api.java.en.When;
@@ -19,7 +19,7 @@ import static junit.framework.Assert.assertTrue;
  *  Step Definition implementation class for Cucumber Steps defined in Feature file
  */
 
-public class ApiSteps extends ApiAbstractHelper {
+public class ApiSteps extends ApiHelper {
 
     private String colourCollection;
     private Response response;
