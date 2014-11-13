@@ -78,23 +78,51 @@ This will download the latest template source code
 IDE Configuration
 ==================
 Intellij plugins  
-
+----------------
 Configure and Install Following Plugins  
 File >> Setting >> Plugins >> Browser Repositories>
 
 *Cucumber for Java
 *Gherkin
-*Junit
 *lombok
 *Git Integration
 *GitHub
 *Maven Integration
-*SonarQube (optionsl)
+*SonarQube (optional)
 
 Import Project
 --------------
 File>Import Project>
-Browser to SalmonAutomationFramework
+Browse to SalmonAutomationFramework
+
+
+Eclipse plugins  
+----------------
+Configure and Install Following Plugins  
+Help>>Install new software
+*Cucumber for Java
+http://cucumber.github.com/cucumber-eclipse/update-site  
+
+*lombok
+Download lombok.jar from http://projectlombok.org/download.html
+Copy the Jar to eclipse installation directory
+right click the Jar>Open with Open JDK or Oracle JDK Java 7 Runtime
+Folow the Install Steps  
+
+*Git Integration
+
+*SonarQube (optional)
+
+Import Project
+--------------
+File>Import>Maven>Existing Maven Projects>Next>
+Browse to SalmonAutomationFramework
+Ensure pom.xml is found
+Finish
+
+open terminal
+cd to test root directory
+run "mvn clean eclipse:eclipse" 
 
 
 Framework Setup steps

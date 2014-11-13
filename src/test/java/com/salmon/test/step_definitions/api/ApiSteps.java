@@ -3,7 +3,6 @@ package com.salmon.test.step_definitions.api;
 import com.jayway.restassured.http.ContentType;
 import com.jayway.restassured.response.Response;
 import com.salmon.test.framework.helpers.ApiAbstractHelper;
-import com.salmon.test.framework.helpers.DatabaseHelper;
 import com.salmon.test.framework.helpers.UrlBuilder;
 import cucumber.api.java.en.Then;
 import cucumber.api.java.en.When;
@@ -33,12 +32,6 @@ public class ApiSteps extends ApiAbstractHelper {
 
         given().contentType(ContentType.JSON);
         response = when().get(UrlBuilder.getApiUrlForEndPoint(endpoint));
-
-        List results = DatabaseHelper.executeQuery("select * from users");
-        for (Object result : results) {
-            System.out.println(result.toString());
-        }
-
     }
 
     /*   Verify HTTP Status code from response*/

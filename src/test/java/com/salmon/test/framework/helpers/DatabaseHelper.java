@@ -15,9 +15,26 @@ public class DatabaseHelper {
 
     private static Connection conn = null;
     private static  final Logger LOG = LoggerFactory.getLogger(DatabaseHelper.class);
+    private static final String jdbcUrl;
 
+    private static final String jdbcDriver;
 
+    private static final String jdbcUser;
 
+    private static final String jdbcPwd;
+
+    static {
+         jdbcUrl = LoadProperties.getRunProps().getProperty("jdbcUrl");
+         jdbcDriver = LoadProperties.getRunProps().getProperty("jdbcDriver");
+         jdbcUser = LoadProperties.getRunProps().getProperty("jdbcUser");
+         jdbcPwd = LoadProperties.getRunProps().getProperty("jdbcPwd");
+
+    }
+
+/**
+* Executes the sql Query and returns the results in list format
+ * @param sqlQuery Specify sql query in String format
+* */
 
     public static List executeQuery(String sqlQuery) throws SQLException {
         conn = setUpConnection();
@@ -28,10 +45,6 @@ public class DatabaseHelper {
 
 
     private static Connection setUpConnection() {
-        String jdbcUrl = LoadProperties.getRunProps().getProperty("jdbcUrl");
-        String jdbcDriver = LoadProperties.getRunProps().getProperty("jdbcDriver");
-        String jdbcUser = LoadProperties.getRunProps().getProperty("jdbcUser");
-        String jdbcPwd = LoadProperties.getRunProps().getProperty("jdbcPwd");
 
         try {
             DbUtils.loadDriver(jdbcDriver);
