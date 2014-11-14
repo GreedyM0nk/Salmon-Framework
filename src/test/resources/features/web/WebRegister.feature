@@ -10,6 +10,7 @@ Feature: REGISTER:- As a new customer of Lloydspharmacy I would like to register
 
   #This is a typical scenario Example. Every Scenario starts with "Scenario:" keyword.
   #Scenarios are represented in Given When Then syntax
+  @new
   Scenario: Register a customer successfully
     Given i navigate to the Lloydspharmacy "HOME" page
     And i click "SIGN_IN" on the Home Page

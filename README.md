@@ -19,25 +19,25 @@ encapsulates the fields represented by a page which ultimately avoids duplicatio
 Tools & libraries
 =================
 The test automation framework is comprised of following tools and libraries  
-*Cucumber-JVM  
-*Custom Page Object Pattern and utility functions    
-*Selenium WebDriver  
-*JAVA  
-*Junit4  
-*Maven  
-*Jenkins
-*Lombok  
-*PicoContainer  
-*Git (optional)  
-*Github (optional)  
-*Intellij Or Eclipse  
-*Hamcrest  
-*Loggers    
-*Joda-Time
-*Sonar (optional)  
-*DbUtils Mysql (optional)  
-*Rest-Assured (optional)    
-  
+
+*Cucumber-JVM:- BDD Framework  
+*Custom Page Object Pattern and utility functions  
+*Selenium WebDriver : - Browser automation framework  
+*JAVA: - Programming language  
+*Junit4: - Java testing framework  
+*Maven: - Build tool  
+*Jenkins: - Continuous Integration  
+*Lombok: - Java utility api  
+*PicoContainer: - Dependency Injection    
+*Git (optional): - Version Control  
+*Github (optional): - Git repository hosted server  
+*Intellij Or Eclipse: - Integrated Development Environment  
+*Hamcrest: - Matcher's  
+*Loggers: - Simple Logging Facade for Java  
+*Joda-Time: - Java Date time Api  
+*SonarQube (optional): - Code Quality and Code Coverage  
+*DbUtils Mysql (optional): - Java Database utility api  
+*Rest-Assured (optional): - Restful Api framework     
 
 Contact information
 ===================
@@ -91,8 +91,8 @@ File >> Setting >> Plugins >> Browser Repositories>
 *Maven Integration
 *SonarQube (optional)
 
-Import Project
---------------
+Import Project into Intellij
+----------------------------
 File>Import Project>
 Browse to SalmonAutomationFramework
 
@@ -114,8 +114,8 @@ Follow the Installation Steps
 
 *SonarQube (optional)
 
-Import Project
---------------
+Import Project into Eclipse
+--------------------------
 File>Import>Maven>Existing Maven Projects>Next>
 Browse to SalmonAutomationFramework
 Ensure pom.xml is found
