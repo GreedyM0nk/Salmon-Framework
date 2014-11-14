@@ -5,6 +5,8 @@ Salmon Test Automation Framework
 This project is a template for Salmon's test automation framework, which provides structured and standard way of 
 creating automated test scripts for GUI and API level tests across salmon projects  
 
+This is a reusable automation framework that blends together Selenium WebDriver and Cucumber JVM (incorporating Gherkin and the BDD 'Given, When Then' testing construct) 
+
 The framework incorporates design principle of BDD (Behaviour driven development) which promotes
  writing acceptance tests by describing behaviour of application under test in simple english language from
  the perspective of its stakeholders. 
