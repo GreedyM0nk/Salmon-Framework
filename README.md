@@ -6,7 +6,7 @@ This project is a template for Salmon's test automation framework, which provide
 creating automated test scripts for GUI and API level tests across salmon projects  
 
 The framework incorporates design principle of BDD (Behaviour driven development) which promotes
- writing acceptance tests by describing behaviour of application under test from
+ writing acceptance tests by describing behaviour of application under test in simple english language from
  the perspective of its stakeholders. 
  Having test written in Natural language helps the Project Team 
  (Product Owners, Business Analysts, Development and QA team) to understand and track the requirements
@@ -32,7 +32,8 @@ The test automation framework is comprised of following tools and libraries
 *Github (optional)  
 *Intellij Or Eclipse  
 *Hamcrest  
-*Loggers  
+*Loggers    
+*Joda-Time
 *Sonar (optional)  
 *DbUtils Mysql (optional)  
 *Rest-Assured (optional)    
