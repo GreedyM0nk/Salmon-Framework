@@ -3,10 +3,9 @@ package com.salmon.test.step_definitions.api;
 import com.salmon.test.framework.helpers.DatabaseHelper;
 import cucumber.api.java.en.Then;
 import cucumber.api.java.en.When;
+import org.testng.Assert;
 
 import java.util.List;
-
-import static org.junit.Assert.assertTrue;
 
 /**
  * Step Definition implementation class for Cucumber Steps defined in Feature file
@@ -24,6 +23,6 @@ public class DatabaseSteps extends DatabaseHelper {
 
     @Then("^the list of users is \"(.*?)\"$")
     public void the_list_of_users_is(String checkResult) throws Throwable {
-        assertTrue("Results are no empty", results.size() > 0);
+        Assert.assertTrue( results.size() > 0);
     }
 }

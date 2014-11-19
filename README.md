@@ -26,7 +26,7 @@ The test automation framework is comprised of following tools and libraries
 *Custom Page Object Pattern and utility functions  
 *Selenium WebDriver : - Browser automation framework  
 *JAVA: - Programming language  
-*Junit4: - Java testing framework  
+*TestNg: - TestNg Java testing framework  
 *Maven: - Build tool  
 *Jenkins: - Continuous Integration  
 *Lombok: - Java utility api  

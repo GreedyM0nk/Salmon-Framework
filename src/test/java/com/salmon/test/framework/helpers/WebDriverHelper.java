@@ -7,10 +7,12 @@ import org.openqa.selenium.chrome.ChromeDriver;
 import org.openqa.selenium.chrome.ChromeDriverService;
 import org.openqa.selenium.chrome.ChromeOptions;
 import org.openqa.selenium.firefox.FirefoxDriver;
+import org.openqa.selenium.ie.InternetExplorerDriver;
 import org.openqa.selenium.logging.LogType;
 import org.openqa.selenium.logging.LoggingPreferences;
 import org.openqa.selenium.remote.CapabilityType;
 import org.openqa.selenium.remote.DesiredCapabilities;
+import org.openqa.selenium.remote.RemoteWebDriver;
 import org.openqa.selenium.support.events.EventFiringWebDriver;
 
 import java.io.File;
@@ -19,8 +21,7 @@ import java.util.logging.Level;
 
 public class WebDriverHelper extends EventFiringWebDriver {
 
-    
-    private static WebDriver REAL_DRIVER = null;
+    private static RemoteWebDriver REAL_DRIVER = null;
     private static String BROWSER;
     private static final Dimension BROWSER_WINDOW_SIZE = new Dimension(1280, 1024);
     private static final Thread CLOSE_THREAD = new Thread() {
@@ -36,15 +37,15 @@ public class WebDriverHelper extends EventFiringWebDriver {
     }
 
 
-
     static {
         BROWSER = LoadProperties.getRunProps().getProperty("browser");
         if (BROWSER.equalsIgnoreCase("chrome")) {
-            REAL_DRIVER = startChromeDriver();
+            REAL_DRIVER = (RemoteWebDriver) startChromeDriver();
         } else if (BROWSER.equalsIgnoreCase("firefox")) {
             startFireFoxDriver();
-        }
-        else {
+        } else if (BROWSER.equalsIgnoreCase("iexplore")) {
+            startIEDriver();
+        } else {
             throw new IllegalArgumentException("Browser type not supported: " + BROWSER);
         }
 
@@ -52,10 +53,17 @@ public class WebDriverHelper extends EventFiringWebDriver {
         Runtime.getRuntime().addShutdownHook(CLOSE_THREAD);
     }
 
+    private static void startIEDriver() {
+        DesiredCapabilities capabilities = getInternetExploreDesiredCapabilities();
+        REAL_DRIVER = new InternetExplorerDriver(capabilities);
+    }
+
 
     private static void startFireFoxDriver() {
+       // DesiredCapabilities capabilities = getFireFoxDesiredCapabilities();
         REAL_DRIVER = new FirefoxDriver();
     }
+
 
     protected static WebDriver startChromeDriver() {
         DesiredCapabilities capabilities = getChromeDesiredCapabilities();
@@ -66,7 +74,8 @@ public class WebDriverHelper extends EventFiringWebDriver {
 
 
     private static DesiredCapabilities getChromeDesiredCapabilities() {
-        System.setProperty("webdriver.chrome.driver", "tools/chromedriver/linux64/chromedriver");
+        String platform = LoadProperties.getRunProps().getProperty("platform");
+        System.setProperty("webdriver.chrome.driver", "tools/chromedriver/" + platform + "/chromedriver");
         LoggingPreferences logs = new LoggingPreferences();
         logs.enable(LogType.DRIVER, Level.OFF);
 
@@ -82,6 +91,25 @@ public class WebDriverHelper extends EventFiringWebDriver {
         return capabilities;
     }
 
+    private static DesiredCapabilities getFireFoxDesiredCapabilities() {
+        DesiredCapabilities capabilities = new DesiredCapabilities();
+        capabilities.setCapability(CapabilityType.ACCEPT_SSL_CERTS, true);
+        return capabilities;
+    }
+
+    private static DesiredCapabilities getInternetExploreDesiredCapabilities() {
+        String platform = LoadProperties.getRunProps().getProperty("platform");
+        System.setProperty("webdriver.ie.driver", "tools/iedriver/" + platform + "/IEDriverServer.exe");
+        LoggingPreferences logs = new LoggingPreferences();
+        logs.enable(LogType.DRIVER, Level.OFF);
+        DesiredCapabilities capabilities = DesiredCapabilities.internetExplorer();
+        capabilities.setCapability(CapabilityType.LOGGING_PREFS, logs);
+        capabilities.setCapability(InternetExplorerDriver.INTRODUCE_FLAKINESS_BY_IGNORING_SECURITY_DOMAINS, true);
+        capabilities.setVersion("9");
+        return capabilities;
+    }
+
+
     private static DesiredCapabilities getAppiumDesiredCapabilities() {
         File classpathRoot = new File(System.getProperty("user.dir"));
         File appDir = new File(classpathRoot, "../../../apps/ApiDemos/bin");
@@ -89,9 +117,9 @@ public class WebDriverHelper extends EventFiringWebDriver {
 
         DesiredCapabilities capabilities = new DesiredCapabilities();
         capabilities.setCapability(CapabilityType.BROWSER_NAME, "");
-        capabilities.setCapability("deviceName","Android Emulator");
+        capabilities.setCapability("deviceName", "Android Emulator");
         capabilities.setCapability("platformVersion", "4.4");
-        capabilities.setCapability("platformName","Android");
+        capabilities.setCapability("platformName", "Android");
         capabilities.setCapability("app", app.getAbsolutePath());
         capabilities.setCapability("appPackage", "com.example.android.apis");
         capabilities.setCapability("appActivity", ".ApiDemos");
@@ -113,3 +141,4 @@ public class WebDriverHelper extends EventFiringWebDriver {
     }
 
 }
+

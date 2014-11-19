@@ -5,11 +5,11 @@ import com.salmon.test.framework.helpers.utils.RandomGenerator;
 import com.salmon.test.page_objects.NewRegistrationPage;
 import cucumber.api.java.en.When;
 import lombok.Getter;
+import org.testng.Assert;
 
 import static com.salmon.test.enums.PermittedCharacters.ALPHABETS;
 import static com.salmon.test.enums.PermittedCharacters.ALPHANUMERIC;
 import static com.salmon.test.framework.helpers.utils.RandomGenerator.random;
-import static org.junit.Assert.assertTrue;
 @Getter
 public class NewRegistrationSteps {
 
@@ -36,7 +36,7 @@ public class NewRegistrationSteps {
 
     @When("^i fill in the registration form on New Registration page$")
     public void i_fill_in_the_registration_form_on_New_Registration_page() throws Throwable {
-        assertTrue("New Registration Form is Displayed", newRegistrationPage.checkNewRegistrationForm());
+        Assert.assertTrue(newRegistrationPage.checkNewRegistrationForm(), "New Registration Form is Displayed");
         enterUserRegistrationDetails();
 
     }

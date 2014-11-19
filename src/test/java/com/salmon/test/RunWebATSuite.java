@@ -1,13 +1,12 @@
 package com.salmon.test;
 
-import org.junit.runner.RunWith;
+
 
 import cucumber.api.CucumberOptions;
-import cucumber.api.junit.Cucumber;
+import cucumber.api.testng.AbstractTestNGCucumberTests;
 
-@RunWith(Cucumber.class)
 @CucumberOptions(features = "target/test-classes", tags = {"@gui"}, monochrome = true, format = {
         "pretty", "html:target/cucumber-report/runwebat",
         "json:target/cucumber-report/runwebat/cucumber.json"})
-public class RunWebATSuite {
+public class RunWebATSuite extends AbstractTestNGCucumberTests{
 }

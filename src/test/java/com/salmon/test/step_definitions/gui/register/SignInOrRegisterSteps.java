@@ -5,8 +5,7 @@ import cucumber.api.java.en.And;
 import cucumber.api.java.en.Given;
 import cucumber.api.java.en.Then;
 import cucumber.api.java.en.When;
-
-import static org.junit.Assert.assertTrue;
+import org.testng.Assert;
 
 
 public class SignInOrRegisterSteps {
@@ -25,7 +24,7 @@ public class SignInOrRegisterSteps {
 
     @Then("^i am signed out successfully and can view Sign In Page$")
     public void i_am_signed_out_successfully_and_can_view_Sign_In_Page() throws Throwable {
-        assertTrue("Sign In Or Register Title", signInOrRegisterPage.getSignInOrRegisterTitle().contains("Sign in or Register for a Lloydspharmacy account"));
+        Assert.assertTrue( signInOrRegisterPage.getSignInOrRegisterTitle().contains("Sign in or Register for a Lloydspharmacy account"),"Sign In Or Register Title");
     }
 
 
@@ -46,7 +45,7 @@ public class SignInOrRegisterSteps {
 
     @Then("^i can see the validation message \"(.*?)\"$")
     public void i_can_see_the_validation_message(String expectedErrorMessage) throws Throwable {
-        assertTrue("Verify Error Message", signInOrRegisterPage.getErrorMessage().contains(expectedErrorMessage));
+        Assert.assertTrue( signInOrRegisterPage.getErrorMessage().contains(expectedErrorMessage),"Verify Error Message");
     }
 
 }

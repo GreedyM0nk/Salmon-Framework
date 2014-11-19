@@ -4,7 +4,7 @@ import com.salmon.test.page_objects.MyAccountSummaryPage;
 import com.salmon.test.step_definitions.gui.register.NewRegistrationSteps;
 import cucumber.api.java.en.Then;
 
-import static org.junit.Assert.assertEquals;
+import static org.testng.Assert.assertEquals;
 
 
 public class MyAccountSummarySteps {

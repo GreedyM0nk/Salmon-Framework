@@ -39,7 +39,7 @@ public class UrlBuilder {
 
 
     public static String getUrl(String applicationUrl) {
-       return LoadProperties.getRunProps().getProperty(applicationUrl);
+        return LoadProperties.getRunProps().getProperty(applicationUrl);
     }
 
     public static URL  createApiUrl(String endpoint) {

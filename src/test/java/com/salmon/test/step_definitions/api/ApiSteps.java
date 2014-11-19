@@ -4,13 +4,11 @@ import com.jayway.restassured.http.ContentType;
 import com.jayway.restassured.response.Response;
 import com.salmon.test.framework.helpers.ApiHelper;
 import com.salmon.test.framework.helpers.UrlBuilder;
-
 import cucumber.api.java.en.Then;
 import cucumber.api.java.en.When;
+import org.testng.Assert;
 
 import java.util.List;
-
-import org.junit.Assert;
 
 import static com.jayway.restassured.RestAssured.given;
 import static com.jayway.restassured.RestAssured.when;
@@ -39,7 +37,7 @@ public class ApiSteps extends ApiHelper {
 
     @Then("^I get a (\\d+) http status code$")
     public void I_get_a_http_status_code(int statusCodeExpected) throws Throwable {
-        Assert.assertEquals("Success Response", statusCodeExpected,response.statusCode());
+        Assert.assertEquals( statusCodeExpected, response.statusCode());
     }
 
 
