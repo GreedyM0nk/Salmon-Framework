@@ -290,16 +290,26 @@ Run Test Suite
 Test Suites are used to run a group of Tests which are tagged and represented in form of Feature files & Scenarios
 
 Location: /home/dev/src/salmonAutomationFramework/src/test/java/com/salmon/test
-File Conventions:Every Class file ends with Suite.class (RunWebAT.class)  
+File Conventions:Every Class file ends with Suite.class (RunWebATSuite.class)  
 
 
-@RunWith(Cucumber.class)
-@Cucumber.Options(features = "target/test-classes", tags = {"@gui,@api}, format = {"pretty","html:target/cucumber-report/runwebat","json:target/cucumber-report/runwebat/cucumber.json"})
-public class RunWebATSuite {
-}
+    @CucumberOptions(features = "target/test-classes", tags = {"@gui"}, 
+         monochrome = true, plugin = {
+        "pretty", "html:target/cucumber-report/runwebat",
+        "json:target/cucumber-report/runwebat/cucumber.json"
+        })
+        
+        public class RunWebATSuite extends AbstractTestNGCucumberTests {
+        }
 
 Where: -  
 features: represent the location of feature files from the compiled build  
 tags:  multiple tags can be specified by comma separated denotation, if a specific tag needs to be excluded then this 
         can be specified by "~" . e.g "~@api" feature files tagged with "~api" will not be run as a part of Test Suite.  
 format: html and json reports are created. if a TesSuite is renamed then change the reporting directory name for both reports   
+
+Other ways to run the tests or Test Suite
+---------------------------------------------
+*command line using Maven:-  mvn clean install -P dev
+*IDE Plugins: - Eclipse or Intellij via TestNg plugin or Maven plugin or Cucumber-Java plugin
+*IDE TestNg Suite xml: - file located at "src/test/resources" TestNGRunTestSuite.xml (Right click and run as TestNg)
