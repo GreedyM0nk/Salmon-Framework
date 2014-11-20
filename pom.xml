@@ -19,7 +19,7 @@
             </activation>
             <properties>
                 <!-- Application under test-->
-                <site.url>http://www.devtestp.lloydspharmacy.com/</site.url>
+                <site.url>http://www.sysstg.lloydspharmacy.com/</site.url>
                 <!-- Service under test-->
                 <api.url>http://www.dulux.com.sg</api.url>
                 <!-- AUT has default desired port-->
@@ -49,7 +49,7 @@
                 <activeByDefault>false</activeByDefault>
             </activation>
             <properties>
-                <site.url>http://www.devtestp.lloydspharmacy.com/</site.url>
+                <site.url>http://www.sysstg.lloydspharmacy.com/</site.url>
                 <api.url>http://www.dulux.com.sg</api.url>
                 <site.port></site.port>
                 <site.basepath></site.basepath>
@@ -70,7 +70,7 @@
                 <activeByDefault>false</activeByDefault>
             </activation>
             <properties>
-                <site.url>http://www.devtestp.lloydspharmacy.com/</site.url>
+                <site.url>http://www.sysstg.lloydspharmacy.com/</site.url>
                 <api.url>http://www.dulux.com.sg/</api.url>
                 <site.port></site.port>
                 <site.basepath></site.basepath>
