@@ -10,15 +10,15 @@ Feature: REGISTER:- As a new customer of Lloydspharmacy I would like to register
 
   #This is a typical scenario Example. Every Scenario starts with "Scenario:" keyword.
   #Scenarios are represented in Given When Then syntax
-  @new
-  Scenario: Register a customer successfully
-    Given i navigate to the Lloydspharmacy "HOME" page
-    And i click "SIGN_IN" on the Home Page
-    And i click on Register for New Registration
-    When i fill in the registration form on New Registration page
-    Then i am registered successfully and can view "My Account Summary" page
-    When i click "SIGN_OUT" on the Home Page
-    Then i am signed out successfully and can view Sign In Page
+
+#  Scenario: Register a customer successfully
+#    Given i navigate to the Lloydspharmacy "HOME" page
+#    And i click "SIGN_IN" on the Home Page
+#    And i click on Register for New Registration
+#    When i fill in the registration form on New Registration page
+#    Then i am registered successfully and can view "My Account Summary" page
+#    When i click "SIGN_OUT" on the Home Page
+#    Then i am signed out successfully and can view Sign In Page
 
   Scenario Outline: Negative combinations for user sign
     Given i navigate to the Lloydspharmacy "HOME" page
