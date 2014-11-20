@@ -142,25 +142,35 @@ URL,  Browser Configuration, Test Suites to Run
 Open "pom.xml" 
 Scroll to Profile section : - Choose desired profile e.g "dev" for running locally
 
-            <profile>
-                           <id>dev</id>
+            <!-- Development environment @ my local machine -->
+                    <profile>
+                        <id>dev</id>
+                        <activation>
+                            <activeByDefault>true</activeByDefault>
+                        </activation>
                         <properties>
                             <!-- Application under test-->
-                            <site.url>http://www.sysstg.lloydspharmacy.com/</site.url>
+                            <site.url>http://www.lloydspharmacy.com/</site.url>
                             <!-- Service under test-->
                             <api.url>http://www.dulux.com.sg</api.url>
                             <!-- AUT has default desired port-->
                             <site.port></site.port>
                             <!-- AUT has default base path-->
                             <site.basepath></site.basepath>
-                            <!--Desired browser to run -->
+                            <!--platform to run e.g linux64, mac32, win32, win64-->
+                            <platform>linux64</platform>
+                            <!--Desired browser to run e.g firefox,chrome,iexplore -->
                             <browser>firefox</browser>
-                            <!--Location of Chrome Driver -->
-                            <webdriver.chrome.driver>tools/chromedriver/linux64/chromedriver</webdriver.chrome.driver>
                             <!--To Run parallel Test suite specify the type of Run Files which can be run in parallel -->
-                            <testToRun>**/*AT.class</testToRun>
+                            <testToRun>**/*ATSuite.class</testToRun>
+            
+                            <!--Database Params -->
+                            <jdbcUrl>jdbc:mysql://localhost:3306/sonar</jdbcUrl>
+                            <jdbcDriver>com.mysql.jdbc.Driver</jdbcDriver>
+                            <jdbcUser>sonar</jdbcUser>
+                            <jdbcPwd>sonar</jdbcPwd>
+            
                         </properties>
-            </profile>
 
 
 Compile Build or Run Tests
