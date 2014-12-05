@@ -24,6 +24,8 @@ public  class LoadProperties {
             setUpEnvironmentURLFor("site.port");
             setUpEnvironmentURLFor("site.basepath");
             setUpEnvironmentURLFor("browser");
+            setUpEnvironmentURLFor("platform");
+            setUpEnvironmentURLFor("driver.root.dir");
         } catch (IOException e) {
             LOG.info(e.getMessage());
         }
@@ -31,11 +33,14 @@ public  class LoadProperties {
 
     protected static void setUpEnvironmentURLFor(String key) {
         String value = getRunProps().getProperty(key);
+        LOG.warn("Properties : key  " + key +" value :" + value);
+
         if (StringUtils.startsWith(value, "http://")) {
             return;
         }
         String urlFromVMOptions = System.getProperty(key);
         if (null != urlFromVMOptions) {
+
             LoadProperties.getRunProps().put(key, urlFromVMOptions);
         }
     }

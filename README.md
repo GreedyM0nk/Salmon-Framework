@@ -110,7 +110,9 @@ http://cucumber.github.com/cucumber-eclipse/update-site
 Download lombok.jar from http://projectlombok.org/download.html
 Copy the Jar to eclipse installation directory
 right click the Jar>Open with Open JDK or Oracle JDK Java 7 Runtime
-Follow the Installation Steps  
+Follow the Installation Steps    
+
+*TestNg  
 
 *Git Integration
 
