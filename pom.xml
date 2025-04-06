@@ -108,18 +108,18 @@
         <slf4jVersion>1.7.7</slf4jVersion>
         <cucumber-jvm-deps>1.0.3</cucumber-jvm-deps>
         <picocontainer>2.14.2</picocontainer>
-        <rest-assured>2.3.4</rest-assured>
+        <rest-assured>2.9.0</rest-assured>
         <commons-io>1.3.2</commons-io>
         <commons-lang>3.3.2</commons-lang>
         <lombok>1.14.8</lombok>
         <hamcrest-all>1.3</hamcrest-all>
-        <appium-java-client>2.0.0</appium-java-client>
+        <appium-java-client>9.4.0</appium-java-client>
         <common-db-utils>1.6</common-db-utils>
         <maven-surefire-plugin>2.17</maven-surefire-plugin>
         <mojo-exec-maven-plugin>1.2.1</mojo-exec-maven-plugin>
         <maven-resource-plugin>2.7</maven-resource-plugin>
-        <maven-compiler-plugin>2.5.1</maven-compiler-plugin>
-        <testng>6.1.1</testng>
+        <maven-compiler-plugin>3.8.1</maven-compiler-plugin>
+        <testng>7.11.0</testng>
         <utf-8>UTF-8</utf-8>
         <joda-time>2.5</joda-time>
         <java-version>1.7</java-version>
@@ -129,6 +129,16 @@
 
     <build>
         <plugins>
+<!--            <plugin>-->
+<!--            <groupId>org.apache.maven.plugins</groupId>-->
+<!--            <artifactId>maven-compiler-plugin</artifactId>-->
+<!--            <version>${maven-compiler-plugin}</version>-->
+<!--            <configuration>-->
+<!--                <encoding>${utf-8}</encoding>-->
+<!--                <source>${java-version}</source>-->
+<!--                <target>${java-version}</target>-->
+<!--            </configuration>-->
+<!--        </plugin>-->
             <plugin>
                 <groupId>org.apache.maven.plugins</groupId>
                 <artifactId>maven-compiler-plugin</artifactId>
@@ -137,6 +147,13 @@
                     <encoding>${utf-8}</encoding>
                     <source>${java-version}</source>
                     <target>${java-version}</target>
+                    <compilerArgs>
+                        <arg>-Xlint:-options</arg>
+                    </compilerArgs>
+                    <annotationProcessorPaths>
+                        <path>com.example:annotation-processor:1.0</path>
+                    </annotationProcessorPaths>
+
                 </configuration>
             </plugin>
             <plugin>
@@ -224,7 +241,19 @@
     <!-- All the test dependencies should be declared in this section -->
 
     <dependencies>
-
+        <!-- https://mvnrepository.com/artifact/io.rest-assured/rest-assured -->
+        <dependency>
+            <groupId>io.rest-assured</groupId>
+            <artifactId>rest-assured</artifactId>
+            <version>5.5.1</version>
+            <scope>test</scope>
+        </dependency>
+        <!-- https://mvnrepository.com/artifact/io.cucumber/cucumber-picocontainer -->
+        <dependency>
+            <groupId>io.cucumber</groupId>
+            <artifactId>cucumber-picocontainer</artifactId>
+            <version>7.22.0</version>
+        </dependency>
         <!-- Cucumber -->
         <dependency>
             <groupId>info.cukes</groupId>
@@ -262,25 +291,12 @@
             <version>${picocontainer}</version>
             <scope>test</scope>
         </dependency>
-        <!-- Cucumber -->
-        <!--Selenium Webdriver -->
+
+        <!-- https://mvnrepository.com/artifact/org.seleniumhq.selenium/selenium-java -->
         <dependency>
             <groupId>org.seleniumhq.selenium</groupId>
-            <artifactId>selenium-chrome-driver</artifactId>
-            <version>${selenium.version}</version>
-            <scope>test</scope>
-        </dependency>
-        <dependency>
-            <groupId>org.seleniumhq.selenium</groupId>
-            <artifactId>selenium-firefox-driver</artifactId>
-            <version>${selenium.version}</version>
-            <scope>test</scope>
-        </dependency>
-        <dependency>
-            <groupId>org.seleniumhq.selenium</groupId>
-            <artifactId>selenium-server</artifactId>
-            <version>${selenium.version}</version>
-            <scope>test</scope>
+            <artifactId>selenium-java</artifactId>
+            <version>4.31.0</version>
         </dependency>
         <!--<dependency>-->
             <!--<groupId>junit</groupId>-->
@@ -296,13 +312,7 @@
     </dependency>
         <!--Selenium Webdriver -->
 
-        <!-- Api Level Testing -->
-        <dependency>
-            <groupId>com.jayway.restassured</groupId>
-            <artifactId>rest-assured</artifactId>
-            <version>${rest-assured}</version>
-        </dependency>
-        <!-- Api Level Testing -->
+
 
         <!--Commons-IO contains utility classes, stream implementations, file filter,-->
         <dependency>
@@ -375,10 +385,11 @@
         <!-- database connectivity-->
 
         <!--mysql database driver-->
+        <!-- https://mvnrepository.com/artifact/com.mysql/mysql-connector-j -->
         <dependency>
-            <groupId>mysql</groupId>
-            <artifactId>mysql-connector-java</artifactId>
-            <version>${mysql}</version>
+            <groupId>com.mysql</groupId>
+            <artifactId>mysql-connector-j</artifactId>
+            <version>9.2.0</version>
         </dependency>
         <!--mysql database driver-->
     </dependencies>
