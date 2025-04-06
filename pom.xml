@@ -82,6 +82,7 @@
                 <activeByDefault>false</activeByDefault>
             </activation>
             <properties>
+                <testToRun>**/*ATSuite.class</testToRun>
                 <site.url>http://www.lloydspharmacy.com/</site.url>
                 <api.url>http://www.dulux.com.sg/</api.url>
                 <site.port></site.port>
@@ -254,6 +255,12 @@
             <artifactId>cucumber-picocontainer</artifactId>
             <version>7.22.0</version>
         </dependency>
+        <!-- https://mvnrepository.com/artifact/io.cucumber/cucumber-java -->
+        <dependency>
+            <groupId>io.cucumber</groupId>
+            <artifactId>cucumber-java</artifactId>
+            <version>7.22.0</version>
+        </dependency>
         <!-- Cucumber -->
         <dependency>
             <groupId>info.cukes</groupId>
@@ -261,12 +268,14 @@
             <scope>test</scope>
             <version>${cucumber-jvm-deps}</version>
         </dependency>
+
+        <!-- https://mvnrepository.com/artifact/net.bytebuddy/byte-buddy -->
         <dependency>
-            <groupId>info.cukes</groupId>
-            <artifactId>cucumber-picocontainer</artifactId>
-            <version>${cucumber.version}</version>
-            <scope>test</scope>
+            <groupId>net.bytebuddy</groupId>
+            <artifactId>byte-buddy</artifactId>
+            <version>1.17.5</version>
         </dependency>
+
         <dependency>
             <groupId>info.cukes</groupId>
             <artifactId>cucumber-testng</artifactId>
@@ -285,12 +294,7 @@
             <!--<version>${cucumber.version}</version>-->
             <!--<scope>test</scope>-->
         <!--</dependency>-->
-        <dependency>
-            <groupId>org.picocontainer</groupId>
-            <artifactId>picocontainer</artifactId>
-            <version>${picocontainer}</version>
-            <scope>test</scope>
-        </dependency>
+
 
         <!-- https://mvnrepository.com/artifact/org.seleniumhq.selenium/selenium-java -->
         <dependency>
@@ -298,12 +302,7 @@
             <artifactId>selenium-java</artifactId>
             <version>4.31.0</version>
         </dependency>
-        <!--<dependency>-->
-            <!--<groupId>junit</groupId>-->
-            <!--<artifactId>junit-dep</artifactId>-->
-            <!--<version>${junit.version}</version>-->
-            <!--<scope>test</scope>-->
-        <!--</dependency>-->
+
         <dependency>
 
         <groupId>org.testng</groupId>
@@ -329,15 +328,6 @@
             <version>${commons-lang}</version>
         </dependency>
         <!--Commons-lang3   a package of Java utility classes -->
-
-        <!-- Date Time support -->
-        <dependency>
-            <groupId>joda-time</groupId>
-            <artifactId>joda-time</artifactId>
-            <version>${joda-time}</version>
-        </dependency>
-        <!-- Date Time support -->
-
         <!--Logger -->
         <dependency>
             <groupId>org.slf4j</groupId>

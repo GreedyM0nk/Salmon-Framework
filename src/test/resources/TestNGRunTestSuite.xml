@@ -5,7 +5,7 @@
     <test name="ParallelThread1">
         <!-- Specify the Run Suite classes which needed to be run in parallel -->
         <classes>
-            <class name="com.salmon.test.RunWebATSuite"/>
+            <class name="com.salmon.test.TestRunWebATSuite"/>
 
         </classes>
     </test>
@@ -14,7 +14,7 @@
         <!-- Specify the Run Suite classes which needed to be run in parallel -->
         <classes>
 
-            <class name="com.salmon.test.RunApiATSuite"/>
+            <class name="com.salmon.test.TestRunApiATSuite"/>
         </classes>
     </test>
 </suite>
