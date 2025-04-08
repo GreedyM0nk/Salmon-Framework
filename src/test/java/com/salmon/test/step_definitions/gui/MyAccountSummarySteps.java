@@ -2,7 +2,8 @@ package com.salmon.test.step_definitions.gui;
 
 import com.salmon.test.page_objects.MyAccountSummaryPage;
 import com.salmon.test.step_definitions.gui.register.NewRegistrationSteps;
-import cucumber.api.java.en.Then;
+//import cucumber.api.java.en.Then;
+import io.cucumber.java.en.Then;
 
 import static org.testng.Assert.assertEquals;
 
@@ -17,7 +18,7 @@ public class MyAccountSummarySteps {
         this.myAccountSummaryPage = myAccountSummaryPage;
     }
 
-    @Then("^i am registered successfully and can view \"([^\"]*)\" page$")
+    @io.cucumber.java.en.Then("^i am registered successfully and can view \"([^\"]*)\" page$")
     public void i_am_registered_successfully_and_can_view_page(String pageTitle) throws Throwable {
         assertEquals(pageTitle, myAccountSummaryPage.getMyaccountSummaryTitle());
         String nameOfTheCustomer = myAccountSummaryPage.getPersonalInformation().get(0).getText();

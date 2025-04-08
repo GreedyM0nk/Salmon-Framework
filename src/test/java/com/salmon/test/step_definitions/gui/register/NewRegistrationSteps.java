@@ -3,7 +3,8 @@ package com.salmon.test.step_definitions.gui.register;
 
 import com.salmon.test.framework.helpers.utils.RandomGenerator;
 import com.salmon.test.page_objects.NewRegistrationPage;
-import cucumber.api.java.en.When;
+//import cucumber.api.java.en.When;
+import io.cucumber.java.en.When;
 import lombok.Getter;
 import org.testng.Assert;
 
@@ -34,7 +35,7 @@ public class NewRegistrationSteps {
     }
 
 
-    @When("^i fill in the registration form on New Registration page$")
+    @io.cucumber.java.en.When("^i fill in the registration form on New Registration page$")
     public void i_fill_in_the_registration_form_on_New_Registration_page() throws Throwable {
         Assert.assertTrue(newRegistrationPage.checkNewRegistrationForm(), "New Registration Form is Displayed");
         enterUserRegistrationDetails();

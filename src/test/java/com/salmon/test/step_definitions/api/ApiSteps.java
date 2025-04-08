@@ -4,8 +4,10 @@ import com.jayway.restassured.http.ContentType;
 import com.jayway.restassured.response.Response;
 import com.salmon.test.framework.helpers.ApiHelper;
 import com.salmon.test.framework.helpers.UrlBuilder;
-import cucumber.api.java.en.Then;
-import cucumber.api.java.en.When;
+//import cucumber.api.java.en.Then;
+//import cucumber.api.java.en.When;
+import io.cucumber.java.en.Then;
+import io.cucumber.java.en.When;
 import org.testng.Assert;
 
 import java.util.List;
@@ -25,7 +27,7 @@ public class ApiSteps extends ApiHelper {
 
     /*   Perform a HTTP GET request for a endpoint*/
 
-    @When("^I perform GET request for \"([^\"]*)\" endpoint$")
+    @io.cucumber.java.en.When("^I perform GET request for \"([^\"]*)\" endpoint$")
     public void I_perform_GET_request_for_endpoint(String endpoint){
 
         given().contentType(ContentType.JSON);
@@ -34,7 +36,7 @@ public class ApiSteps extends ApiHelper {
 
     /*   Verify HTTP Status code from response*/
 
-    @Then("^I get a (\\d+) http status code$")
+    @io.cucumber.java.en.Then("^I get a (\\d+) http status code$")
     public void I_get_a_http_status_code(int statusCodeExpected) {
         Assert.assertEquals( statusCodeExpected, response.statusCode());
     }

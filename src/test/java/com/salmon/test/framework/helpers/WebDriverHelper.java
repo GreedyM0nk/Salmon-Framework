@@ -12,14 +12,13 @@ import org.openqa.selenium.logging.LoggingPreferences;
 import org.openqa.selenium.remote.CapabilityType;
 import org.openqa.selenium.remote.DesiredCapabilities;
 import org.openqa.selenium.remote.RemoteWebDriver;
-import org.openqa.selenium.support.events.EventFiringWebDriver;
-import org.slf4j.Logger;
+ import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
 import java.io.File;
 import java.util.logging.Level;
 
-public class WebDriverHelper extends EventFiringWebDriver {
+public class WebDriverHelper extends RemoteWebDriver {
 
 	private static RemoteWebDriver REAL_DRIVER = null;
 	private static String BROWSER;
