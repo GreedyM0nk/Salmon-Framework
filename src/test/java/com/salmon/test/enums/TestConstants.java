@@ -9,11 +9,28 @@ import lombok.Getter;
 */
 
 
-@AllArgsConstructor
+//@AllArgsConstructor
+//public enum TestConstants {
+//    SALMON_TEST_FRAMEWORK("salmon test framework"),
+//    TEST_COUNT("test count");
+//
+//    @Getter
+//    String cssClass;
+//}
+
+
+
 public enum TestConstants {
     SALMON_TEST_FRAMEWORK("salmon test framework"),
     TEST_COUNT("test count");
 
     @Getter
-    String cssClass;
+    private final String cssClass;
+
+    // Define a constructor explicitly for the enum
+    TestConstants(String cssClass) {
+        this.cssClass = cssClass;
+    }
 }
+
+

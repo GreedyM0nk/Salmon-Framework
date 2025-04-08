@@ -123,8 +123,8 @@
         <testng>7.11.0</testng>
         <utf-8>UTF-8</utf-8>
         <joda-time>2.5</joda-time>
-        <java-version>1.7</java-version>
-        <mysql>5.1.6</mysql>
+        <java-version>1.8</java-version>
+        <mysql>8.0.33</mysql>
     </properties>
 
 
@@ -385,9 +385,9 @@
         <!--mysql database driver-->
         <!-- https://mvnrepository.com/artifact/com.mysql/mysql-connector-j -->
         <dependency>
-            <groupId>com.mysql</groupId>
-            <artifactId>mysql-connector-j</artifactId>
-            <version>9.2.0</version>
+            <groupId>mysql</groupId>
+            <artifactId>mysql-connector-java</artifactId>
+            <version>${mysql}</version>
         </dependency>
         <!-- https://mvnrepository.com/artifact/joda-time/joda-time -->
         <dependency>
