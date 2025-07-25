@@ -21,11 +21,15 @@ public class UrlBuilder {
             LoadProperties.loadRunConfigProps(RUN_CONFIG_PROPERTIES);
             String siteUrl = LoadProperties.getRunProps().getProperty("site.url");
             String apiUrlStr = LoadProperties.getRunProps().getProperty("api.url");
-            if (siteUrl != null) {
+            if (siteUrl != null && !siteUrl.isEmpty()) {
                 basePath = new URL(siteUrl);
+            } else {
+                LOG.error("site.url property is missing or empty in environment.properties");
             }
-            if (apiUrlStr != null) {
+            if (apiUrlStr != null && !apiUrlStr.isEmpty()) {
                 apiUrl = new URL(apiUrlStr);
+            } else {
+                LOG.error("api.url property is missing or empty in environment.properties");
             }
         } catch (MalformedURLException e) {
             LOG.error("Malformed URL in environment.properties: {}", e.getMessage());
@@ -37,10 +41,10 @@ public class UrlBuilder {
      */
     public static void startAtHomePage() {
         String url = getUrl("site.url");
-        if (url != null) {
+        if (url != null && !url.isEmpty()) {
             WebDriverHelper.getWebDriver().navigate().to(url);
         } else {
-            LOG.error("site.url property is missing in environment.properties");
+            LOG.error("site.url property is missing or empty in environment.properties");
         }
     }
 
@@ -56,10 +60,10 @@ public class UrlBuilder {
      */
     public static URI getBasePathURI() {
         String siteUrl = LoadProperties.getRunProps().getProperty("site.url");
-        if (siteUrl != null) {
+        if (siteUrl != null && !siteUrl.isEmpty()) {
             return URI.create(siteUrl);
         } else {
-            LOG.error("site.url property is missing in environment.properties");
+            LOG.error("site.url property is missing or empty in environment.properties");
             return null;
         }
     }
@@ -68,7 +72,11 @@ public class UrlBuilder {
      * Gets a property value from the run configuration.
      */
     public static String getUrl(String applicationUrl) {
-        return LoadProperties.getRunProps().getProperty(applicationUrl);
+        String value = LoadProperties.getRunProps().getProperty(applicationUrl);
+        if (value == null || value.isEmpty()) {
+            LOG.error("{} property is missing or empty in environment.properties", applicationUrl);
+        }
+        return value;
     }
 
     /**

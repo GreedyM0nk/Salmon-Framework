@@ -1,9 +1,8 @@
 package com.salmon.test.framework.helpers.screenshot_helper;
 
 import com.salmon.test.framework.PageObject;
-import cucumber.api.Scenario;
-//import cucumber.api.java.After;
 import io.cucumber.java.After;
+import io.cucumber.java.Scenario;
 import org.openqa.selenium.OutputType;
 import org.openqa.selenium.TakesScreenshot;
 import org.openqa.selenium.WebDriverException;
@@ -16,25 +15,24 @@ public class ScreenshotHook extends PageObject {
 
     private static final Logger LOG = LoggerFactory.getLogger(ScreenshotHook.class);
 
-    @io.cucumber.java.After
+    @After
     public void embedScreenshot(Scenario scenario) {
         try {
             Map<String, Object> screenShots = ScreenshotHelper.getScreenShotsForCurrentTest();
             for (Map.Entry<String, Object> screenShot : screenShots.entrySet()) {
-                scenario.write(screenShot.getKey());
-                scenario.embed((byte[]) screenShot.getValue(), "image/png");
+                scenario.attach(((byte[]) screenShot.getValue()), "image/png", screenShot.getKey());
             }
 
             ScreenshotHelper.tidyUpAfterTestRun();
 
             if (scenario.isFailed()) {
-                scenario.write(getWebDriver().getCurrentUrl());
+                scenario.attach(getWebDriver().getCurrentUrl().getBytes(), "text/plain", "Current URL");
                 byte[] screenShot = ((TakesScreenshot) getWebDriver()).getScreenshotAs(OutputType.BYTES);
-                scenario.embed(screenShot, "image/png");
+                scenario.attach(screenShot, "image/png", "Failure Screenshot");
             }
 
         } catch (WebDriverException | ClassCastException wde) {
-            LOG.error(wde.getMessage());
+            LOG.error("Screenshot capture failed: {}", wde.getMessage());
         } finally {
             getWebDriver().switchTo().defaultContent();
         }
