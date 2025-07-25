@@ -73,7 +73,7 @@ Test Automation Architect
     </activation>
     <properties>
         <!-- Application under test -->
-        <site.url>http://www.example.com/</site.url>
+        <site.url>https://rahulshettyacademy.com/locatorspractice/</site.url>
 
         <!-- Service under test -->
         <api.url>http://www.exampleapi.com</api.url>
