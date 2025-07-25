@@ -111,8 +111,8 @@
         <picocontainer>2.14.2</picocontainer>
         <rest-assured>2.9.0</rest-assured>
         <commons-io>1.3.2</commons-io>
-        <commons-lang>3.3.2</commons-lang>
-        <lombok>1.14.8</lombok>
+        <commons-lang>3.14.0</commons-lang>
+        <lombok>1.18.32</lombok>
         <hamcrest-all>1.3</hamcrest-all>
         <appium-java-client>9.4.0</appium-java-client>
         <common-db-utils>1.6</common-db-utils>
@@ -151,10 +151,6 @@
                     <compilerArgs>
                         <arg>-Xlint:-options</arg>
                     </compilerArgs>
-                    <annotationProcessorPaths>
-                        <path>com.example:annotation-processor:1.0</path>
-                    </annotationProcessorPaths>
-
                 </configuration>
             </plugin>
             <plugin>
@@ -211,16 +207,7 @@
                 <artifactId>maven-resources-plugin</artifactId>
                 <version>${maven-resource-plugin}</version>
                 <configuration>
-                    <!-- specify UTF-8, ISO-8859-1 or any other file encoding -->
                     <encoding>${utf-8}</encoding>
-
-                    <resources>
-                        <resource>
-                            <directory>src/main/resources</directory>
-                            <filtering>true</filtering>
-                        </resource>
-                    </resources>
-
                 </configuration>
             </plugin>
 
@@ -385,8 +372,8 @@
         <!--mysql database driver-->
         <!-- https://mvnrepository.com/artifact/com.mysql/mysql-connector-j -->
         <dependency>
-            <groupId>mysql</groupId>
-            <artifactId>mysql-connector-java</artifactId>
+            <groupId>com.mysql</groupId>
+            <artifactId>mysql-connector-j</artifactId>
             <version>${mysql}</version>
         </dependency>
         <!-- https://mvnrepository.com/artifact/joda-time/joda-time -->

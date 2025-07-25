@@ -1,55 +1,71 @@
-Titanium Test Automation Framework
+# Titanium Test Automation Framework
 
-This project is a template for Titanium's test automation framework, which provides a structured and standard way of creating automated test scripts for GUI and API level tests across Titanium projects.
-Tools and Libraries Used
+This project is a template for Titanium's test automation framework, providing a structured and standard way to create automated test scripts for GUI and API level tests across Titanium projects.
 
-    Cucumber-JVM: BDD Framework
-    Custom Page Object Pattern and utility functions
-    Selenium WebDriver: Browser automation framework
-    Java: Programming language
-    TestNG: Java testing framework
-    Maven: Build tool
-    Jenkins: Continuous Integration
-    Lombok: Java utility API
-    PicoContainer: Dependency Injection
-    Git (optional): Version Control
-    GitHub (optional): Git repository hosted server
-    IntelliJ or Eclipse: Integrated Development Environment
-    Hamcrest: Matchers
-    Loggers: Simple Logging Facade for Java
-    Joda-Time: Java Date-Time API
-    SonarQube (optional): Code quality and coverage
-    DbUtils MySQL (optional): Java Database utility API
-    Rest-Assured (optional): RESTful API framework
+---
 
-Contact Information
-Overall Test & Test Management Support
+## Tools and Libraries Used
 
-Souvik Dutta
-Head of Testing
-souviktechnoindia@gmail.com
-Test Automation Framework Support
+- **Cucumber-JVM**: BDD Framework
+- **Custom Page Object Pattern** and utility functions
+- **Selenium WebDriver**: Browser automation framework
+- **Java**: Programming language
+- **TestNG**: Java testing framework
+- **Maven**: Build tool
+- **Jenkins**: Continuous Integration
+- **Lombok**: Java utility API
+- **PicoContainer**: Dependency Injection
+- **Git** (optional): Version Control
+- **GitHub** (optional): Git repository hosted server
+- **IntelliJ or Eclipse**: Integrated Development Environment
+- **Hamcrest**: Matchers
+- **SLF4J**: Simple Logging Facade for Java
+- **Joda-Time**: Java Date-Time API
+- **SonarQube** (optional): Code quality and coverage
+- **DbUtils MySQL** (optional): Java Database utility API
+- **Rest-Assured** (optional): RESTful API framework
 
-Souvik Dutta
-Test Automation Architect
-souviktechnoindia@gmail.com
-Framework Setup
-Prerequisites
+---
 
-    Java 7
-    Git
-    Maven
-    Clone the repository:
-    git clone https://github.com/titaniumtest/titaniumtest.git
-    Configuration Steps
+## Contact Information
 
-    Open pom.xml.
-    Scroll to the Profile section.
-    Choose the desired profile (e.g., "dev" for running locally).
+**Overall Test & Test Management Support**  
+Souvik Dutta  
+Head of Testing  
+[souviktechnoindia@gmail.com](mailto:souviktechnoindia@gmail.com)
 
-Sample Profile Configuration:
+**Test Automation Framework Support**  
+Souvik Dutta  
+Test Automation Architect  
+[souviktechnoindia@gmail.com](mailto:souviktechnoindia@gmail.com)
 
+---
 
+## Framework Setup
+
+### Prerequisites
+
+- Java 7+
+- Git
+- Maven
+
+### Getting Started
+
+1. **Clone the repository:**
+   ```sh
+   git clone https://github.com/titaniumtest/titaniumtest.git
+   ```
+
+2. **Configuration Steps:**
+   - Open `pom.xml`.
+   - Scroll to the Profile section.
+   - Choose the desired profile (e.g., `"dev"` for running locally).
+
+---
+
+## Sample Profile Configuration
+
+```xml
 <profile>
     <id>dev</id>
     <activation>
@@ -78,4 +94,32 @@ Sample Profile Configuration:
         <testToRun>**/*ATSuite.class</testToRun>
     </properties>
 </profile>
-    
+```
+
+---
+
+## Running Tests
+
+To run tests, use Maven from the project root:
+
+```sh
+mvn clean install
+```
+
+Or specify a profile:
+
+```sh
+mvn clean install -P dev
+```
+
+Test results and reports will be available in the `target/surefire-reports` directory.
+
+---
+
+## Additional Notes
+
+- Update the `pom.xml` dependencies and plugins as needed for your environment.
+- Refer to the documentation of each tool/library for advanced configuration.
+
+---
+
