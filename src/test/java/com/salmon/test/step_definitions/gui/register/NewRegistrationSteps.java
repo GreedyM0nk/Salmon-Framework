@@ -1,50 +1,42 @@
 package com.salmon.test.step_definitions.gui.register;
 
-
 import com.salmon.test.framework.helpers.utils.RandomGenerator;
 import com.salmon.test.page_objects.NewRegistrationPage;
-//import cucumber.api.java.en.When;
 import io.cucumber.java.en.When;
-import lombok.Getter;
 import org.testng.Assert;
 
 import static com.salmon.test.enums.PermittedCharacters.ALPHABETS;
 import static com.salmon.test.enums.PermittedCharacters.ALPHANUMERIC;
 import static com.salmon.test.framework.helpers.utils.RandomGenerator.random;
-@Getter
+
 public class NewRegistrationSteps {
 
-    private NewRegistrationPage newRegistrationPage;
+    private final NewRegistrationPage newRegistrationPage;
 
-    private String loginIdData = random(6, ALPHANUMERIC);
-    private String passwordData = random(6, ALPHANUMERIC);
-    private String titleData = "Dr.";
-    private String firstNameData = random(6, ALPHABETS);
-    private String lastNameData = random(6, ALPHABETS);
-    private String postCodeData = "UB10 9DW";
-    private String address1Data = random(6, ALPHABETS);
-    private String townOrCityData = random(6, ALPHABETS);
-    private String emailAddressData = RandomGenerator.randomEmailAddress(6);
-    private String birthDateData = "1";
-    private String birthMonthData = "1";
-    private String birthYearData = "1982";
-
+    private final String loginIdData = random(6, ALPHANUMERIC);
+    private final String passwordData = random(6, ALPHANUMERIC);
+    private final String titleData = "Dr.";
+    private final String firstNameData = random(6, ALPHABETS);
+    private final String lastNameData = random(6, ALPHABETS);
+    private final String postCodeData = "UB10 9DW";
+    private final String address1Data = random(6, ALPHABETS);
+    private final String townOrCityData = random(6, ALPHABETS);
+    private final String emailAddressData = RandomGenerator.randomEmailAddress(6);
+    private final String birthDateData = "1";
+    private final String birthMonthData = "1";
+    private final String birthYearData = "1982";
 
     public NewRegistrationSteps(NewRegistrationPage newRegistrationPage) {
         this.newRegistrationPage = newRegistrationPage;
     }
 
-
-    @io.cucumber.java.en.When("^i fill in the registration form on New Registration page$")
-    public void i_fill_in_the_registration_form_on_New_Registration_page() throws Throwable {
+    @When("^i fill in the registration form on New Registration page$")
+    public void fillInRegistrationFormOnNewRegistrationPage() throws Exception {
         Assert.assertTrue(newRegistrationPage.checkNewRegistrationForm(), "New Registration Form is Displayed");
         enterUserRegistrationDetails();
-
     }
 
-
     public void enterUserRegistrationDetails() {
-
         newRegistrationPage.loginIdText().sendKeys(loginIdData);
         newRegistrationPage.passwordText().sendKeys(passwordData);
         newRegistrationPage.verifyPasswordText().sendKeys(passwordData);
@@ -67,8 +59,5 @@ public class NewRegistrationSteps {
         newRegistrationPage.acceptTermsAndConditions(true);
 
         newRegistrationPage.submitRegistration();
-
     }
-
-
 }

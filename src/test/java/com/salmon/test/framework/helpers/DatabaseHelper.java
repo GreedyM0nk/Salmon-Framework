@@ -12,6 +12,9 @@ import java.sql.SQLException;
 import java.util.List;
 import java.util.Map;
 
+/**
+ * Helper class for executing SQL queries using JDBC and Apache DbUtils.
+ */
 public class DatabaseHelper {
 
     private static final Logger LOG = LoggerFactory.getLogger(DatabaseHelper.class);
@@ -22,16 +25,22 @@ public class DatabaseHelper {
 
     static {
         LoadProperties loadProperties = new LoadProperties();
-        jdbcUrl = loadProperties.getProperty("jdbcUrl");
-        jdbcDriver = loadProperties.getProperty("jdbcDriver");
-        jdbcUser = loadProperties.getProperty("jdbcUser");
-        jdbcPwd = loadProperties.getProperty("jdbcPwd");
+        jdbcUrl = loadProperties.getProperty("jdbcUrl", null);
+        jdbcDriver = loadProperties.getProperty("jdbcDriver", null);
+        jdbcUser = loadProperties.getProperty("jdbcUser", null);
+        jdbcPwd = loadProperties.getProperty("jdbcPwd", null);
+
+        if (jdbcUrl == null || jdbcDriver == null || jdbcUser == null || jdbcPwd == null) {
+            throw new IllegalStateException("Database connection properties are missing in configuration.");
+        }
     }
 
     /**
-     * Executes the sql Query and returns the results in list format
+     * Executes the SQL query and returns the results in list format.
      *
-     * @param sqlQuery Specify sql query in String format
+     * @param sqlQuery SQL query string
+     * @return List of result rows as maps
+     * @throws SQLException if query execution fails
      */
     public static List<Map<String, Object>> executeQuery(String sqlQuery) throws SQLException {
         try (Connection conn = setUpConnection()) {

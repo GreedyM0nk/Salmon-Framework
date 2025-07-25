@@ -1,56 +1,36 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
          xmlns="http://maven.apache.org/POM/4.0.0"
-         xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
+         xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 
+                             http://maven.apache.org/xsd/maven-4.0.0.xsd">
     <modelVersion>4.0.0</modelVersion>
 
     <groupId>com.akzonobel.test</groupId>
     <artifactId>salmonAutomationFramework</artifactId>
     <version>1.0-SNAPSHOT</version>
 
-    <!-- Test Profiles, define URL for AUT, Browser and Test Suites -->
-
     <profiles>
-        <!-- Development environment @ my local machine -->
         <profile>
             <id>dev</id>
             <activation>
                 <activeByDefault>true</activeByDefault>
             </activation>
             <properties>
-                <!-- Application under test-->
                 <site.url>http://www.lloydspharmacy.com/</site.url>
-                <!-- Service under test-->
                 <api.url>http://www.dulux.com.sg</api.url>
-                <!-- AUT has default desired port-->
                 <site.port></site.port>
-                <!-- AUT has default base path-->
                 <site.basepath></site.basepath>
-                <!--platform to run e.g linux64, mac32, win32, win64-->
                 <platform>win32</platform>
-                <!--Desired browser to run e.g firefox,chrome,iexplore -->
                 <browser>firefox</browser>
-
-                <!--Location of Chrome & IE Drivers installed, normally in your project source code under tools-->
-                <!-- Below is windows example. Linux example  home/dev/src/cucumber_testng_java/tools-->
-                <!-- If set to DEFAULT_PATH, will try to access from default path location -->
-                
-                 <driver.root.dir>C:\dev\cucumber_testng_java\tools</driver.root.dir>
-                 
-
-                 <!--To Run parallel Test suite specify the type of Run Files which can be run in parallel -->
+                <driver.root.dir>C:\dev\cucumber_testng_java\tools</driver.root.dir>
                 <testToRun>**/*ATSuite.class</testToRun>
-
-                <!--Database Params -->
                 <jdbcUrl>jdbc:mysql://localhost:3306/sonar</jdbcUrl>
-                <jdbcDriver>com.mysql.jdbc.Driver</jdbcDriver>
+                <jdbcDriver>com.mysql.cj.jdbc.Driver</jdbcDriver> <!-- updated driver -->
                 <jdbcUser>sonar</jdbcUser>
                 <jdbcPwd>sonar</jdbcPwd>
-
             </properties>
         </profile>
 
-        <!-- Single Test -->
         <profile>
             <id>single</id>
             <activation>
@@ -63,19 +43,15 @@
                 <site.basepath></site.basepath>
                 <platform>win32</platform>
                 <browser>firefox</browser>
-                <!--Location of Chrome & IE Drivers installed, normally in your project source code under tools-->
-                <!-- Below is windows example. Linux example  home/dev/src/cucumber_testng_java/tools-->
-                 <driver.root.dir>C:\dev\cucumber_testng_java\tools</driver.root.dir>
+                <driver.root.dir>C:\dev\cucumber_testng_java\tools</driver.root.dir>
                 <testToRun>**/*SingleSuite.class</testToRun>
-                <!--Database Params -->
                 <jdbcUrl>jdbc:mysql://localhost:3306/sonar</jdbcUrl>
-                <jdbcDriver>com.mysql.jdbc.Driver</jdbcDriver>
+                <jdbcDriver>com.mysql.cj.jdbc.Driver</jdbcDriver>
                 <jdbcUser>root</jdbcUser>
                 <jdbcPwd></jdbcPwd>
             </properties>
         </profile>
 
-        <!-- Jenkins environment @ deploy server normally configured on linux-->
         <profile>
             <id>deploy</id>
             <activation>
@@ -91,55 +67,41 @@
                 <browser>firefox</browser>
                 <driver.root.dir>DEFAULT_PATH</driver.root.dir>
                 <testToRun>**/*JenkinsSuite.class</testToRun>
-                <!--Database Params -->
                 <jdbcUrl>jdbc:mysql://localhost:3306/sonar</jdbcUrl>
-                <jdbcDriver>com.mysql.jdbc.Driver</jdbcDriver>
+                <jdbcDriver>com.mysql.cj.jdbc.Driver</jdbcDriver>
                 <jdbcUser>root</jdbcUser>
                 <jdbcPwd></jdbcPwd>
             </properties>
         </profile>
     </profiles>
 
-
-
     <properties>
-        <cucumber.version>1.2.0</cucumber.version>
-        <selenium.version>2.43.1</selenium.version>
-        <junit.version>4.11</junit.version>
-        <slf4jVersion>1.7.7</slf4jVersion>
-        <cucumber-jvm-deps>1.0.3</cucumber-jvm-deps>
-        <picocontainer>2.14.2</picocontainer>
-        <rest-assured>2.9.0</rest-assured>
-        <commons-io>1.3.2</commons-io>
-        <commons-lang>3.14.0</commons-lang>
-        <lombok>1.18.32</lombok>
-        <hamcrest-all>1.3</hamcrest-all>
-        <appium-java-client>9.4.0</appium-java-client>
-        <common-db-utils>1.6</common-db-utils>
-        <maven-surefire-plugin>2.17</maven-surefire-plugin>
-        <mojo-exec-maven-plugin>1.2.1</mojo-exec-maven-plugin>
-        <maven-resource-plugin>2.7</maven-resource-plugin>
-        <maven-compiler-plugin>3.8.1</maven-compiler-plugin>
-        <testng>7.11.0</testng>
+        <cucumber.version>8.13.0</cucumber.version>
+        <selenium.version>4.15.0</selenium.version>
+        <junit.version>4.13.2</junit.version>
+        <slf4jVersion>2.0.7</slf4jVersion>
+        <cucumber-jvm-deps>7.11.0</cucumber-jvm-deps>
+        <picocontainer>2.15.0</picocontainer>
+        <rest-assured>5.7.0</rest-assured>
+        <commons-io>2.14.0</commons-io>
+        <commons-lang>3.13.0</commons-lang>
+        <lombok>1.18.26</lombok>
+        <hamcrest-all>2.2</hamcrest-all>
+        <appium-java-client>9.10.0</appium-java-client>
+        <common-db-utils>1.7</common-db-utils>
+        <maven-surefire-plugin>3.1.2</maven-surefire-plugin>
+        <mojo-exec-maven-plugin>3.1.0</mojo-exec-maven-plugin>
+        <maven-resource-plugin>3.3.0</maven-resource-plugin>
+        <maven-compiler-plugin>3.11.0</maven-compiler-plugin>
+        <testng>7.8.0</testng>
         <utf-8>UTF-8</utf-8>
-        <joda-time>2.5</joda-time>
+        <joda-time>2.11.3</joda-time>
         <java-version>1.8</java-version>
-        <mysql>8.0.33</mysql>
+        <mysql>8.1.0</mysql>
     </properties>
-
 
     <build>
         <plugins>
-<!--            <plugin>-->
-<!--            <groupId>org.apache.maven.plugins</groupId>-->
-<!--            <artifactId>maven-compiler-plugin</artifactId>-->
-<!--            <version>${maven-compiler-plugin}</version>-->
-<!--            <configuration>-->
-<!--                <encoding>${utf-8}</encoding>-->
-<!--                <source>${java-version}</source>-->
-<!--                <target>${java-version}</target>-->
-<!--            </configuration>-->
-<!--        </plugin>-->
             <plugin>
                 <groupId>org.apache.maven.plugins</groupId>
                 <artifactId>maven-compiler-plugin</artifactId>
@@ -153,6 +115,7 @@
                     </compilerArgs>
                 </configuration>
             </plugin>
+
             <plugin>
                 <groupId>org.apache.maven.plugins</groupId>
                 <artifactId>maven-surefire-plugin</artifactId>
@@ -169,10 +132,8 @@
                             <perCoreThreadCount>true</perCoreThreadCount>
                             <forkCount>4</forkCount>
                             <reuseForks>false</reuseForks>
-                            <argLine>-Duser.language=en</argLine>
-                            <argLine>-Xmx1024m</argLine>
-                            <argLine>-XX:MaxPermSize=256m</argLine>
-                            <argLine>-Dfile.encoding=UTF-8</argLine>
+                            <!-- Consolidated argLine -->
+                            <argLine>-Duser.language=en -Xmx1024m -XX:MaxPermSize=256m -Dfile.encoding=UTF-8</argLine>
                             <useFile>false</useFile>
                             <includes>
                                 <include>${testToRun}</include>
@@ -182,6 +143,7 @@
                     </execution>
                 </executions>
             </plugin>
+
             <plugin>
                 <groupId>org.codehaus.mojo</groupId>
                 <artifactId>exec-maven-plugin</artifactId>
@@ -210,68 +172,38 @@
                     <encoding>${utf-8}</encoding>
                 </configuration>
             </plugin>
-
-
         </plugins>
 
-        <!-- Instructing the resources plugin to filter certain directories -->
         <resources>
             <resource>
                 <directory>src/main/resources</directory>
                 <filtering>true</filtering>
             </resource>
         </resources>
-
-
     </build>
 
-
-    <!-- All the test dependencies should be declared in this section -->
-
     <dependencies>
-        <!-- https://mvnrepository.com/artifact/io.rest-assured/rest-assured -->
+        <!-- Rest-assured -->
         <dependency>
             <groupId>io.rest-assured</groupId>
             <artifactId>rest-assured</artifactId>
-            <version>5.5.1</version>
+            <version>${rest-assured}</version>
             <scope>test</scope>
         </dependency>
-        <!-- https://mvnrepository.com/artifact/com.jayway.restassured/rest-assured -->
-        <dependency>
-            <groupId>com.jayway.restassured</groupId>
-            <artifactId>rest-assured</artifactId>
-            <version>2.9.0</version>
-            <scope>test</scope>
-        </dependency>
-        <!-- https://mvnrepository.com/artifact/io.cucumber/cucumber-picocontainer -->
+
+        <!-- Cucumber -->
         <dependency>
             <groupId>io.cucumber</groupId>
             <artifactId>cucumber-picocontainer</artifactId>
-            <version>7.22.0</version>
+            <version>${cucumber.version}</version>
         </dependency>
-        <!-- https://mvnrepository.com/artifact/io.cucumber/cucumber-java -->
         <dependency>
             <groupId>io.cucumber</groupId>
             <artifactId>cucumber-java</artifactId>
-            <version>7.22.0</version>
+            <version>${cucumber.version}</version>
         </dependency>
-        <!-- Cucumber -->
         <dependency>
-            <groupId>info.cukes</groupId>
-            <artifactId>cucumber-jvm-deps</artifactId>
-            <scope>test</scope>
-            <version>${cucumber-jvm-deps}</version>
-        </dependency>
-
-        <!-- https://mvnrepository.com/artifact/net.bytebuddy/byte-buddy -->
-        <dependency>
-            <groupId>net.bytebuddy</groupId>
-            <artifactId>byte-buddy</artifactId>
-            <version>1.17.5</version>
-        </dependency>
-
-        <dependency>
-            <groupId>info.cukes</groupId>
+            <groupId>io.cucumber</groupId>
             <artifactId>cucumber-testng</artifactId>
             <version>${cucumber.version}</version>
             <scope>test</scope>
@@ -282,106 +214,95 @@
                 </exclusion>
             </exclusions>
         </dependency>
-        <!--<dependency>-->
-            <!--<groupId>info.cukes</groupId>-->
-            <!--<artifactId>cucumber-junit</artifactId>-->
-            <!--<version>${cucumber.version}</version>-->
-            <!--<scope>test</scope>-->
-        <!--</dependency>-->
 
+        <!-- Byte Buddy -->
+        <dependency>
+            <groupId>net.bytebuddy</groupId>
+            <artifactId>byte-buddy</artifactId>
+            <version>1.14.22</version>
+        </dependency>
 
-        <!-- https://mvnrepository.com/artifact/org.seleniumhq.selenium/selenium-java -->
+        <!-- Selenium -->
         <dependency>
             <groupId>org.seleniumhq.selenium</groupId>
             <artifactId>selenium-java</artifactId>
-            <version>4.31.0</version>
+            <version>${selenium.version}</version>
         </dependency>
 
+        <!-- TestNG -->
         <dependency>
+            <groupId>org.testng</groupId>
+            <artifactId>testng</artifactId>
+            <version>${testng}</version>
+        </dependency>
 
-        <groupId>org.testng</groupId>
-        <artifactId>testng</artifactId>
-        <version>${testng}</version>
-    </dependency>
-        <!--Selenium Webdriver -->
-
-
-
-        <!--Commons-IO contains utility classes, stream implementations, file filter,-->
-        <!-- https://mvnrepository.com/artifact/commons-io/commons-io -->
+        <!-- Commons IO -->
         <dependency>
             <groupId>commons-io</groupId>
             <artifactId>commons-io</artifactId>
-            <version>2.18.0</version>
+            <version>${commons-io}</version>
         </dependency>
-        <!--Commons-IO contains utility classes, stream implementations, file filter,-->
 
-        <!--Commons-lang3   a package of Java utility classes -->
+        <!-- Commons Lang -->
         <dependency>
             <groupId>org.apache.commons</groupId>
             <artifactId>commons-lang3</artifactId>
             <version>${commons-lang}</version>
         </dependency>
-        <!--Commons-lang3   a package of Java utility classes -->
-        <!--Logger -->
+
+        <!-- SLF4J -->
         <dependency>
             <groupId>org.slf4j</groupId>
             <artifactId>slf4j-api</artifactId>
             <version>${slf4jVersion}</version>
         </dependency>
-
         <dependency>
             <groupId>org.slf4j</groupId>
             <artifactId>slf4j-simple</artifactId>
             <version>${slf4jVersion}</version>
         </dependency>
 
-        <!-- lombok for Getter Setters-->
+        <!-- Lombok -->
         <dependency>
             <groupId>org.projectlombok</groupId>
             <artifactId>lombok</artifactId>
             <version>${lombok}</version>
             <scope>provided</scope>
         </dependency>
-        <!--lombok -->
 
-        <!-- matchers -->
+        <!-- Hamcrest -->
         <dependency>
             <groupId>org.hamcrest</groupId>
             <artifactId>hamcrest-all</artifactId>
             <version>${hamcrest-all}</version>
         </dependency>
-        <!-- matchers -->
 
-        <!-- appium -->
+        <!-- Appium Java Client -->
         <dependency>
             <groupId>io.appium</groupId>
             <artifactId>java-client</artifactId>
             <version>${appium-java-client}</version>
         </dependency>
-        <!-- appium -->
 
-        <!-- database connectivity-->
+        <!-- Commons DBUtils -->
         <dependency>
             <groupId>commons-dbutils</groupId>
             <artifactId>commons-dbutils</artifactId>
             <version>${common-db-utils}</version>
         </dependency>
-        <!-- database connectivity-->
 
-        <!--mysql database driver-->
-        <!-- https://mvnrepository.com/artifact/com.mysql/mysql-connector-j -->
+        <!-- MySQL Connector/J -->
         <dependency>
             <groupId>com.mysql</groupId>
             <artifactId>mysql-connector-j</artifactId>
             <version>${mysql}</version>
         </dependency>
-        <!-- https://mvnrepository.com/artifact/joda-time/joda-time -->
+
+        <!-- Joda-Time -->
         <dependency>
             <groupId>joda-time</groupId>
             <artifactId>joda-time</artifactId>
-            <version>2.14.0</version>
+            <version>${joda-time}</version>
         </dependency>
-        <!--mysql database driver-->
     </dependencies>
 </project>

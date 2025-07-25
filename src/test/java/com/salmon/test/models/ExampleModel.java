@@ -1,14 +1,16 @@
 package com.salmon.test.models;
 
 import lombok.Getter;
+import lombok.AllArgsConstructor;
 
 @Getter
+@AllArgsConstructor
 public class ExampleModel {
-    private String title;
-    private String colour;
-    private String topic;
-    private String mood;
-    private boolean section;
-    private boolean featuredColourSection;
-    private boolean meetTheExpert;
+    private final String title;
+    private final String colour;
+    private final String topic;
+    private final String mood;
+    private final boolean section;
+    private final boolean featuredColourSection;
+    private final boolean meetTheExpert;
 }

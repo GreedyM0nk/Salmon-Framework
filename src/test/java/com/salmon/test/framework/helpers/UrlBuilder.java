@@ -7,55 +7,95 @@ import java.net.MalformedURLException;
 import java.net.URI;
 import java.net.URL;
 
+/**
+ * Utility class for building URLs and URIs for site and API endpoints.
+ */
 public class UrlBuilder {
-    private static  URL basePath;
-    private static URL apiUrl;
     private static final Logger LOG = LoggerFactory.getLogger(UrlBuilder.class);
     private static final String RUN_CONFIG_PROPERTIES = "/environment.properties";
-
+    private static URL basePath;
+    private static URL apiUrl;
 
     static {
         try {
             LoadProperties.loadRunConfigProps(RUN_CONFIG_PROPERTIES);
-            basePath = new URL(LoadProperties.getRunProps().getProperty("site.url"));
-            apiUrl = new URL(LoadProperties.getRunProps().getProperty("api.url"));
+            String siteUrl = LoadProperties.getRunProps().getProperty("site.url");
+            String apiUrlStr = LoadProperties.getRunProps().getProperty("api.url");
+            if (siteUrl != null) {
+                basePath = new URL(siteUrl);
+            }
+            if (apiUrlStr != null) {
+                apiUrl = new URL(apiUrlStr);
+            }
         } catch (MalformedURLException e) {
-            LOG.error(e.getMessage());
+            LOG.error("Malformed URL in environment.properties: {}", e.getMessage());
         }
-
     }
 
+    /**
+     * Navigates the WebDriver to the home page.
+     */
     public static void startAtHomePage() {
-        WebDriverHelper.getWebDriver().navigate().to(getUrl("site.url"));
+        String url = getUrl("site.url");
+        if (url != null) {
+            WebDriverHelper.getWebDriver().navigate().to(url);
+        } else {
+            LOG.error("site.url property is missing in environment.properties");
+        }
     }
 
-    public  static URL getApiUrlForEndPoint(String endpoint){
+    /**
+     * Returns the API URL for a given endpoint.
+     */
+    public static URL getApiUrlForEndPoint(String endpoint) {
         return createApiUrl(endpoint);
     }
 
+    /**
+     * Returns the base path URI for the site.
+     */
     public static URI getBasePathURI() {
-        return URI.create(LoadProperties.getRunProps().getProperty(""));
+        String siteUrl = LoadProperties.getRunProps().getProperty("site.url");
+        if (siteUrl != null) {
+            return URI.create(siteUrl);
+        } else {
+            LOG.error("site.url property is missing in environment.properties");
+            return null;
+        }
     }
 
-
+    /**
+     * Gets a property value from the run configuration.
+     */
     public static String getUrl(String applicationUrl) {
         return LoadProperties.getRunProps().getProperty(applicationUrl);
     }
 
-    public static URL  createApiUrl(String endpoint) {
+    /**
+     * Creates an API URL for the given endpoint.
+     */
+    public static URL createApiUrl(String endpoint) {
         try {
+            if (apiUrl == null) {
+                throw new IllegalStateException("api.url property is missing in environment.properties");
+            }
             return new URL(apiUrl.getProtocol(), apiUrl.getHost(), apiUrl.getPort(), endpoint);
         } catch (MalformedURLException e) {
-            throw new RuntimeException(e);
+            throw new RuntimeException("Malformed API endpoint URL: " + endpoint, e);
         }
     }
 
-
-    public static URL  createUrl(String path) {
+    /**
+     * Creates a site URL for the given path.
+     */
+    public static URL createUrl(String path) {
         try {
+            if (basePath == null) {
+                throw new IllegalStateException("site.url property is missing in environment.properties");
+            }
             return new URL(basePath.getProtocol(), basePath.getHost(), basePath.getPort(), path);
         } catch (MalformedURLException e) {
-            throw new RuntimeException(e);
+            throw new RuntimeException("Malformed site path URL: " + path, e);
         }
     }
 }
