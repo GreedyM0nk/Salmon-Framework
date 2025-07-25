@@ -76,18 +76,18 @@
     </profiles>
 
     <properties>
-        <cucumber.version>8.13.0</cucumber.version>
+        <cucumber.version>7.26.0</cucumber.version>
         <selenium.version>4.15.0</selenium.version>
         <junit.version>4.13.2</junit.version>
         <slf4jVersion>2.0.7</slf4jVersion>
         <cucumber-jvm-deps>7.11.0</cucumber-jvm-deps>
         <picocontainer>2.15.0</picocontainer>
-        <rest-assured>5.7.0</rest-assured>
+        <rest-assured>5.5.5</rest-assured>
         <commons-io>2.14.0</commons-io>
         <commons-lang>3.13.0</commons-lang>
         <lombok>1.18.26</lombok>
-        <hamcrest-all>2.2</hamcrest-all>
-        <appium-java-client>9.10.0</appium-java-client>
+        <hamcrest>3.0</hamcrest>
+        <appium-java-client>9.5.0</appium-java-client>
         <common-db-utils>1.7</common-db-utils>
         <maven-surefire-plugin>3.1.2</maven-surefire-plugin>
         <mojo-exec-maven-plugin>3.1.0</mojo-exec-maven-plugin>
@@ -95,7 +95,7 @@
         <maven-compiler-plugin>3.11.0</maven-compiler-plugin>
         <testng>7.8.0</testng>
         <utf-8>UTF-8</utf-8>
-        <joda-time>2.11.3</joda-time>
+        <joda-time>2.14.0</joda-time>
         <java-version>1.8</java-version>
         <mysql>8.1.0</mysql>
     </properties>
@@ -219,7 +219,7 @@
         <dependency>
             <groupId>net.bytebuddy</groupId>
             <artifactId>byte-buddy</artifactId>
-            <version>1.14.22</version>
+            <version>1.17.6</version>
         </dependency>
 
         <!-- Selenium -->
@@ -273,8 +273,8 @@
         <!-- Hamcrest -->
         <dependency>
             <groupId>org.hamcrest</groupId>
-            <artifactId>hamcrest-all</artifactId>
-            <version>${hamcrest-all}</version>
+            <artifactId>hamcrest</artifactId>
+            <version>${hamcrest}</version>
         </dependency>
 
         <!-- Appium Java Client -->
