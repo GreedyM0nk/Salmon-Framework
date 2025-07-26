@@ -85,7 +85,7 @@
         <rest-assured>5.5.5</rest-assured>
         <commons-io>2.14.0</commons-io>
         <commons-lang>3.13.0</commons-lang>
-        <lombok>1.18.26</lombok>
+        <lombok>1.18.38</lombok>
         <hamcrest>3.0</hamcrest>
         <appium-java-client>9.5.0</appium-java-client>
         <common-db-utils>1.7</common-db-utils>
