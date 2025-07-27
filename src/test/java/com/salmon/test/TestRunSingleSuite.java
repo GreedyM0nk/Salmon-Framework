@@ -14,7 +14,7 @@ import io.cucumber.testng.AbstractTestNGCucumberTests;
     dryRun = true, // Set to false to run tests, true to check step definitions
     plugin = {
         "pretty",
-        "html:target/cucumber-report/single",
+        "html:target/html-report/single/single.html",
         "json:target/cucumber-report/single/cucumber.json"
     }
 )

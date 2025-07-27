@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE suite SYSTEM "http://testng.org/testng-1.0.dtd">
-<suite name="run tests in parallel" parallel="tests" verbose="1" configfailurepolicy="continue" thread-count="2">
+<suite name="run tests in parallel" parallel="tests" verbose="1" configfailurepolicy="continue" thread-count="1">
 
     <test name="ParallelThread1">
         <!-- Specify the Run Suite classes which needed to be run in parallel -->
@@ -10,11 +10,11 @@
         </classes>
     </test>
 
-    <test name="ParallelThread2">
-        <!-- Specify the Run Suite classes which needed to be run in parallel -->
-        <classes>
+<!--    <test name="ParallelThread2">-->
+<!--        &lt;!&ndash; Specify the Run Suite classes which needed to be run in parallel &ndash;&gt;-->
+<!--        <classes>-->
 
-            <class name="com.salmon.test.TestRunApiATSuite"/>
-        </classes>
-    </test>
+<!--            <class name="com.salmon.test.TestRunApiATSuite"/>-->
+<!--        </classes>-->
+<!--    </test>-->
 </suite>

@@ -15,7 +15,7 @@ import io.cucumber.testng.AbstractTestNGCucumberTests;
     monochrome = true, // Cleaner console output
     plugin = {
         "pretty",
-        "html:target/cucumber-report/runjenkins",
+        "html:target/jenkins-report/runjenkins/runjenkins.html",
         "json:target/cucumber-report/runjenkins/cucumber.json"
     }
 )

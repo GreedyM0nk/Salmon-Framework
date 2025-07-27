@@ -13,7 +13,7 @@ import io.cucumber.testng.AbstractTestNGCucumberTests;
     monochrome = true,
     plugin = {
         "pretty",
-        "html:target/cucumber-report/runapiat",
+        "html:target/html-report/runapiat/runapiat.html",
         "json:target/cucumber-report/runapiat/cucumber.json"
     }
 )

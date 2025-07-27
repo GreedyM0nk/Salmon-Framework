@@ -20,10 +20,10 @@ public class WebDriverHelper {
 
     private static WebDriver REAL_DRIVER = null;
     private static String BROWSER;
-    private static String PLATFORM;
-    private static String DRIVER_PATH;
-    private static String DRIVER_ROOT_DIR;
-    private static String FILE_SEPARATOR;
+//    private static String PLATFORM;
+//    private static String DRIVER_PATH;
+//    private static String DRIVER_ROOT_DIR;
+//    private static String FILE_SEPARATOR;
     private static final Logger LOG = LoggerFactory.getLogger(WebDriverHelper.class);
     private static final Dimension BROWSER_WINDOW_SIZE = new Dimension(1280, 1024);
     private static final Thread CLOSE_THREAD = new Thread(() -> {
@@ -33,15 +33,15 @@ public class WebDriverHelper {
     });
 
     static {
-        FILE_SEPARATOR = System.getProperty("file.separator");
-        PLATFORM = LoadProperties.getRunProps().getProperty("platform");
+//        FILE_SEPARATOR = System.getProperty("file.separator");
+//        PLATFORM = LoadProperties.getRunProps().getProperty("platform");
+//        DRIVER_ROOT_DIR = LoadProperties.getRunProps().getProperty("driver.root.dir");
         BROWSER = LoadProperties.getRunProps().getProperty("browser");
-        DRIVER_ROOT_DIR = LoadProperties.getRunProps().getProperty("driver.root.dir");
 
-        if (!DRIVER_ROOT_DIR.equals("DEFAULT_PATH")) {
-            System.setProperty("webdriver.chrome.driver", getDriverPath());
-            System.setProperty("webdriver.ie.driver", getDriverPath());
-        }
+//        if (!DRIVER_ROOT_DIR.equals("DEFAULT_PATH")) {
+//            System.setProperty("webdriver.chrome.driver", getDriverPath());
+//            System.setProperty("webdriver.ie.driver", getDriverPath());
+//        }
 
         try {
             if (BROWSER.equalsIgnoreCase("chrome")) {
@@ -51,12 +51,10 @@ public class WebDriverHelper {
             } else if (BROWSER.equalsIgnoreCase("iexplore")) {
                 REAL_DRIVER = startIEDriver();
             } else {
-                throw new IllegalArgumentException("Browser " + BROWSER + " or Platform " + PLATFORM + " type not supported");
+                throw new IllegalArgumentException("Browser " + BROWSER + " is not supported");
             }
         } catch (IllegalStateException e) {
-            LOG.error("FIX path for driver.root.dir in pom.xml " + DRIVER_ROOT_DIR
-                    + " Browser parameter " + BROWSER + " Platform parameter " + PLATFORM
-                    + " type not supported");
+            LOG.error("Browser " + BROWSER + " is not supported");
         }
 
         if (REAL_DRIVER != null) {
@@ -65,22 +63,22 @@ public class WebDriverHelper {
         Runtime.getRuntime().addShutdownHook(CLOSE_THREAD);
     }
 
-    public static String getDriverPath() {
-        if (BROWSER.equals("chrome") && PLATFORM.contains("win")) {
-            DRIVER_PATH = DRIVER_ROOT_DIR + FILE_SEPARATOR + "chromedriver"
-                    + FILE_SEPARATOR + PLATFORM + FILE_SEPARATOR
-                    + "chromedriver.exe";
-        } else if (BROWSER.equals("chrome") && PLATFORM.contains("linux")) {
-            DRIVER_PATH = DRIVER_ROOT_DIR + FILE_SEPARATOR + "chromedriver"
-                    + FILE_SEPARATOR + PLATFORM + FILE_SEPARATOR
-                    + "chromedriver";
-        } else if (BROWSER.equals("iexplore") && PLATFORM.contains("win")) {
-            DRIVER_PATH = DRIVER_ROOT_DIR + FILE_SEPARATOR + "iedriver"
-                    + FILE_SEPARATOR + PLATFORM + FILE_SEPARATOR
-                    + "IEDriverServer.exe";
-        }
-        return DRIVER_PATH;
-    }
+//    public static String getDriverPath() {
+//        if (BROWSER.equals("chrome") && PLATFORM.contains("win")) {
+//            DRIVER_PATH = DRIVER_ROOT_DIR + FILE_SEPARATOR + "chromedriver"
+//                    + FILE_SEPARATOR + PLATFORM + FILE_SEPARATOR
+//                    + "chromedriver.exe";
+//        } else if (BROWSER.equals("chrome") && PLATFORM.contains("linux")) {
+//            DRIVER_PATH = DRIVER_ROOT_DIR + FILE_SEPARATOR + "chromedriver"
+//                    + FILE_SEPARATOR + PLATFORM + FILE_SEPARATOR
+//                    + "chromedriver";
+//        } else if (BROWSER.equals("iexplore") && PLATFORM.contains("win")) {
+//            DRIVER_PATH = DRIVER_ROOT_DIR + FILE_SEPARATOR + "iedriver"
+//                    + FILE_SEPARATOR + PLATFORM + FILE_SEPARATOR
+//                    + "IEDriverServer.exe";
+//        }
+//        return DRIVER_PATH;
+//    }
 
     private static WebDriver startIEDriver() {
         InternetExplorerOptions ieOptions = new InternetExplorerOptions();
@@ -104,7 +102,7 @@ public class WebDriverHelper {
         chromeOptions.setCapability("goog:loggingPrefs", logs);
         chromeOptions.setCapability("chrome.verbose", false);
 
-        return new ChromeDriver(chromeOptions);
+        return new ChromeDriver();
     }
 
     public static WebDriver getWebDriver() {

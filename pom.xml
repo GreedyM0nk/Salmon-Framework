@@ -21,13 +21,13 @@
                 <site.port></site.port>
                 <site.basepath></site.basepath>
                 <platform>win32</platform>
-                <browser>firefox</browser>
-                <driver.root.dir>C:\dev\cucumber_testng_java\tools</driver.root.dir>
-                <testToRun>**/*ATSuite.class</testToRun>
-                <jdbcUrl>jdbc:mysql://localhost:3306/sonar</jdbcUrl>
-                <jdbcDriver>com.mysql.cj.jdbc.Driver</jdbcDriver> <!-- updated driver -->
-                <jdbcUser>sonar</jdbcUser>
-                <jdbcPwd>sonar</jdbcPwd>
+                <browser>chrome</browser>
+                <driver.root.dir>D:\code-space\IDE\intellij\Titanium-Framework\tools</driver.root.dir>
+                <testToRun>**/*WebATSuite.class</testToRun>
+<!--                <jdbcUrl>jdbc:mysql://localhost:3306/sonar</jdbcUrl>-->
+<!--                <jdbcDriver>com.mysql.cj.jdbc.Driver</jdbcDriver> &lt;!&ndash; updated driver &ndash;&gt;-->
+<!--                <jdbcUser>sonar</jdbcUser>-->
+<!--                <jdbcPwd>sonar</jdbcPwd>-->
             </properties>
         </profile>
 
@@ -77,27 +77,25 @@
 
     <properties>
         <cucumber.version>7.26.0</cucumber.version>
-        <selenium.version>4.15.0</selenium.version>
+        <selenium.version>4.34.0</selenium.version>
         <junit.version>4.13.2</junit.version>
         <slf4jVersion>2.0.7</slf4jVersion>
-        <cucumber-jvm-deps>7.11.0</cucumber-jvm-deps>
-        <picocontainer>2.15.0</picocontainer>
         <rest-assured>5.5.5</rest-assured>
-        <commons-io>2.14.0</commons-io>
-        <commons-lang>3.13.0</commons-lang>
+        <commons-io>2.20.0</commons-io>
+        <commons-lang>3.18.0</commons-lang>
         <lombok>1.18.38</lombok>
         <hamcrest>3.0</hamcrest>
         <appium-java-client>9.5.0</appium-java-client>
-        <common-db-utils>1.7</common-db-utils>
-        <maven-surefire-plugin>3.1.2</maven-surefire-plugin>
-        <mojo-exec-maven-plugin>3.1.0</mojo-exec-maven-plugin>
-        <maven-resource-plugin>3.3.0</maven-resource-plugin>
-        <maven-compiler-plugin>3.11.0</maven-compiler-plugin>
-        <testng>7.8.0</testng>
+        <commons-dbutils>1.8.1</commons-dbutils>
+        <maven-surefire-plugin>3.5.3</maven-surefire-plugin>
+        <mojo-exec-maven-plugin>3.5.1</mojo-exec-maven-plugin>
+        <maven-resources-plugin>3.3.1</maven-resources-plugin>
+        <maven-compiler-plugin>3.14.0</maven-compiler-plugin>
+        <testng>7.11.0</testng>
         <utf-8>UTF-8</utf-8>
         <joda-time>2.14.0</joda-time>
-        <java-version>1.8</java-version>
-        <mysql>8.1.0</mysql>
+        <java-version>17</java-version>
+        <mysql>9.3.0</mysql>
     </properties>
 
     <build>
@@ -167,7 +165,7 @@
             <plugin>
                 <groupId>org.apache.maven.plugins</groupId>
                 <artifactId>maven-resources-plugin</artifactId>
-                <version>${maven-resource-plugin}</version>
+                <version>${maven-resources-plugin}</version>
                 <configuration>
                     <encoding>${utf-8}</encoding>
                 </configuration>
@@ -288,7 +286,7 @@
         <dependency>
             <groupId>commons-dbutils</groupId>
             <artifactId>commons-dbutils</artifactId>
-            <version>${common-db-utils}</version>
+            <version>${commons-dbutils}</version>
         </dependency>
 
         <!-- MySQL Connector/J -->
